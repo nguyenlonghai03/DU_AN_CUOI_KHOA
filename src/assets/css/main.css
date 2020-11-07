@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+  font-family: 'Cairo', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+header,
+section,
+footer,
+aside,
+nav,
+main,
+article,
+figure {
+  display: block;
+}
+
+.header {
+  color: red;
+}
+/*# sourceMappingURL=main.css.map */
