@@ -1,10 +1,11 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import './assets/css/main.css'
 import './App.css';
+
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import ChiTietPhim from './pages/ChiTietPhim/ChiTietPhim';
 import TrangChu from './pages/TrangChu/TrangChu';
 import { HomeTemplate } from './templates/HomeTemplate';
-import './assets/css/main.css'
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
 
         <HomeTemplate exact path="/" Component={TrangChu} />
       </Switch>
+
     </BrowserRouter>
   );
 }

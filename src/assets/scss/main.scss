@@ -1,7 +1,11 @@
+//Viết scss xong import vào đây
+
 @import './Helper/variable';
 @import './base/reset';
 
 @import './Helper/mixin';
 
 
-@import './Layouts/header'
+@import './Layouts/header';
+@import './Layouts/footer'
+///import ở đây

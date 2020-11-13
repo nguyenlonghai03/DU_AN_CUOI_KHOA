@@ -6,7 +6,8 @@
         "../scss/Helper/_variable.scss",
         "../scss/base/_reset.scss",
         "../scss/Helper/_mixin.scss",
-        "../scss/Layouts/_header.scss"
+        "../scss/Layouts/_header.scss",
+        "../scss/Layouts/_footer.scss"
     ],
     "names": [],
     "file": "main.css"

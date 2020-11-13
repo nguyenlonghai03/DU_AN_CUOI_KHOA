@@ -12,7 +12,6 @@ export default function TrangChu() {
             <Carousel />
             <NewTrailer />
 
-
             <VideoBG />
             <ListFilm />
 
