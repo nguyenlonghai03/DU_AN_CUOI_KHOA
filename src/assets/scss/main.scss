@@ -1,12 +1,18 @@
 //Viết scss xong import vào đây
 
-@import './Helper/variable';
-@import './base/reset';
+@import "./Helper/variable";
+@import "./base/reset";
 
-@import './Helper/mixin';
+@import "./Helper/mixin";
 
+@import "./Layouts/header";
+@import "./Layouts/footer";
 
+<<<<<<< HEAD
 @import './Layouts/header';
 @import './Layouts/footer';
 @import './Layouts/cinemas'
 ///import ở đây
+=======
+@import "./Layouts/carousel"; ///import ở đây
+>>>>>>> 2e4849f6dc731d1cbd58710c55796152c7e86fb8
