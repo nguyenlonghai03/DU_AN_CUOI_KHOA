@@ -1,5 +1,26 @@
 import Axios from 'axios'
 
+export const layDanhSachPhimApiAction = () => {
+    return dispatch => {
+        //action này trả về hàm có tham số dispatch
+        var promise = Axios({
+            url: 'https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP03',
+            method: 'GET'
+        });
+        //Thành công lấy dữ liệu trả về set lại state dsPhim
+        promise.then((res) => {
+            dispatch({
+                type: 'LAY_DANH_SACH_PHIM_ACTION',
+                dsPhim: res.data
+            })
+        })
+        //Thất bại console.log(lỗi)
+        promise.catch((error) => {
+            console.log(error.response.data);
+        })
+    }
+}
+
 export const layTatCaThongTinHeThongRapApi = async () => {
     return async dispatch => {
         try {
