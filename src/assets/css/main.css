@@ -19,6 +19,95 @@ figure {
   display: block;
 }
 
+.modal {
+  background: dodgerblue;
+  height: 1px;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease 0.5s, height 0.5s ease;
+  width: 0;
+}
+
+.content {
+  color: transparent;
+  font-family: 'Consolas', arial, sans-serif;
+  font-size: 2em;
+  position: absolute;
+  top: 50%;
+  text-align: center;
+  transform: translate3d(0, -50%, 0);
+  transition: color 0.5s ease;
+  width: 100%;
+}
+
+label {
+  color: dodgerblue;
+  cursor: pointer;
+  font-family: 'Consolas', arial, sans-serif;
+  font-size: 2em;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  text-transform: uppercase;
+  transform: translate(-50%, -50%);
+  transition: color 0.5s ease 0.5s;
+}
+
+input {
+  cursor: pointer;
+  height: 0;
+  opacity: 0;
+  width: 0;
+}
+
+input:focus {
+  outline: none;
+}
+
+input:checked {
+  height: 40px;
+  opacity: 1;
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  z-index: 1;
+  -webkit-appearance: none;
+  width: 40px;
+}
+
+input:checked::after, input:checked:before {
+  border-top: 1px solid #FFF;
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  transform: rotate(45deg);
+  width: 100%;
+}
+
+input:checked::after {
+  transform: rotate(-45deg);
+}
+
+input:checked + label {
+  color: #FFF;
+  transition: color 0.5s ease;
+}
+
+input:checked ~ .modal {
+  height: 100%;
+  width: 100%;
+  transition: width 0.5s ease, height 0.5s ease 0.5s;
+}
+
+input:checked ~ .modal .content {
+  color: #FFF;
+  transition: color 0.5s ease 0.5s;
+}
+
 .cinemas {
   font-size: 15px !important;
 }
@@ -275,5 +364,142 @@ body {
   align-items: center !important;
   display: grid !important;
   text-align: center !important;
+}
+
+/* COmingsoon */
+.commingSoon {
+  background: #000;
+  color: #fff;
+  position: relative;
+}
+
+.comingSoon__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../img/slide-3.png") no-repeat center;
+}
+
+.commingSoon__type {
+  color: #ec7532;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+.commingSoon__title {
+  font-size: 34px;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.comingSoon__ratingDate {
+  display: flex;
+  align-items: center;
+}
+
+.comingSoon__start .fa {
+  color: #fbbd61;
+  font-size: 10px;
+}
+
+.comingSoon__date {
+  font-size: 14px;
+  opacity: .75;
+  line-height: 24px;
+  color: #fff;
+}
+
+.comingSoon__des {
+  font-size: 16px;
+  color: #fff;
+}
+
+.comingSoon__moreinfo {
+  font-size: 12px;
+  position: relative;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #ec7532;
+  transition: all .3s;
+  text-decoration: none;
+}
+
+.comingSoon__moreinfo:hover {
+  color: #fbbd61;
+  text-decoration: none;
+}
+
+.commingSoon__trainer {
+  position: relative;
+}
+
+.commingSoon__trainer .fa {
+  font-size: 24px;
+  line-height: 75px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 80px;
+  height: 80px;
+  margin: auto;
+  transition: all 300ms ease-in-out;
+  text-align: center;
+  color: #fff;
+  border: 2px solid #ec7532;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.commingSoon__trainer:hover .fa {
+  transform: scale(0.9);
+}
+
+/* Movie List */
+.movieList {
+  background: #101010;
+}
+
+.movieList__item img {
+  border-radius: 10px;
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+}
+
+.movieList__info {
+  color: #fff;
+  text-align: center;
+}
+
+.movieList__info h4 {
+  font-size: 16px;
+  overflow: hidden;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 0;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.movieList__info p {
+  font-size: 14px;
+  opacity: .5;
+  color: #fff;
+}
+
+.movieList__item {
+  transition: all .5s;
+  cursor: pointer;
+}
+
+.movieList__item:first-child,
+.movieList__item:hover {
+  opacity: 1;
 }
 /*# sourceMappingURL=main.css.map */

@@ -5,9 +5,13 @@
 
 @import "./Helper/mixin";
 
+@import './components/modal';
 
 @import './Layouts/header';
-@import './Layouts/footer';
 @import './Layouts/cinemas';
 ///import ở đây
 @import "./Layouts/carousel"; ///import ở đây
+@import './Layouts/videohome';
+@import './Layouts/movileList';
+@import './Layouts/footer';
+///import ở đây
