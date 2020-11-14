@@ -23,7 +23,7 @@ export default function Footer() {
         //         </div>
         //     </div>
         // </div>
-        <footer className="new_footer_area bg_color">
+        <footer style={{ fontSize: "15px" }} className="new_footer_area bg_color ">
             <div className="new_footer_top">
                 <div className="container">
                     <div className="row">
