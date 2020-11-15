@@ -11,7 +11,7 @@ export default function Cinemas(props) {
         dispatch(await layTatCaThongTinHeThongRapApi())
     }, [])
 
-    console.log("skajdjfsdkjfb")
+    console.log("hai2")
     console.log("TAT CA", tatCaThongTinHeThongRap)
     console.log("danhSachPhimNEBA", danhSachPhim)
 
