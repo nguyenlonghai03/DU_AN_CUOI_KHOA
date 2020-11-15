@@ -23,7 +23,7 @@ export default function Footer() {
     //         </div>
     //     </div>
     // </div>
-    <footer className="new_footer_area bg_color bg-dark">
+    <footer className="new_footer_area bg_color bg-light">
       <div className="new_footer_top">
         <div className="container">
           <div className="row">

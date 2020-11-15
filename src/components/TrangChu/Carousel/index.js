@@ -1,7 +1,8 @@
 import $ from "jquery";
 
-(function () {
-  var rotatingSlider = function (selector, options) {
+(async function () {
+
+  var rotatingSlider = await function (selector, options) {
     function initSingleSlider($el, options) {
       var $slider,
         $rotaters,
@@ -182,12 +183,12 @@ import $ from "jquery";
           $(this).css(
             "transform",
             "rotate" +
-              axis +
-              "(" +
-              index * angle * angleMult +
-              "deg) translateZ(" +
-              depth +
-              "px)"
+            axis +
+            "(" +
+            index * angle * angleMult +
+            "deg) translateZ(" +
+            depth +
+            "px)"
           );
         });
 
@@ -227,12 +228,12 @@ import $ from "jquery";
           $(this).css(
             "transform",
             "rotate" +
-              axis +
-              "(" +
-              index * angle * angleMult +
-              "deg) translateZ(" +
-              depth +
-              "px)"
+            axis +
+            "(" +
+            index * angle * angleMult +
+            "deg) translateZ(" +
+            depth +
+            "px)"
           );
         });
 
@@ -292,8 +293,6 @@ import $ from "jquery";
   };
 
   window.rotatingSlider = rotatingSlider;
-})();
-
-$(document).ready(function () {
   rotatingSlider(".slider3d", { xRotation: false, globalDragRotation: true });
-});
+
+})();
