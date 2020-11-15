@@ -4,6 +4,8 @@ import { layDanhSachPhimTheoMaCumRapApi, layTatCaThongTinHeThongRapApi } from '.
 import { NavLink } from 'react-router-dom'
 import moment from 'moment'
 
+const hi = () => { }
+
 export default function Cinemas(props) {
     const { tatCaThongTinHeThongRap, danhSachPhim } = useSelector(state => state.QuanLyPhimReducer)
     const dispatch = useDispatch();
