@@ -4,6 +4,7 @@ import { layDanhSachPhimTheoMaCumRapApi, layTatCaThongTinHeThongRapApi } from '.
 import { NavLink } from 'react-router-dom'
 import moment from 'moment'
 
+const hi = () => { }
 const hello = () => { }
 
 export default function Cinemas(props) {
