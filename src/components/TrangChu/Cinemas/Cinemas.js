@@ -14,7 +14,6 @@ export default function Cinemas(props) {
     console.log("skajdjfsdkjfb")
     console.log("TAT CA", tatCaThongTinHeThongRap)
     console.log("danhSachPhimNEBA", danhSachPhim)
-
     return (
         <div style={{ fontSize: "15px" }} className="cinemas container-fluid bg-dark py-5">
             <div className="container text-center ">
