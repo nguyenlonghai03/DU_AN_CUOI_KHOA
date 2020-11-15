@@ -4,8 +4,6 @@ import { layDanhSachPhimTheoMaCumRapApi, layTatCaThongTinHeThongRapApi } from '.
 import { NavLink } from 'react-router-dom'
 import moment from 'moment'
 
-const sdf = () => { }
-const hello = () => { }
 
 export default function Cinemas(props) {
     const duc1 = () => { }
@@ -15,7 +13,7 @@ export default function Cinemas(props) {
         dispatch(await layTatCaThongTinHeThongRapApi())
     }, [])
 
-    console.log("branchLongHai")
+
     console.log("TAT CA", tatCaThongTinHeThongRap)
     console.log("danhSachPhimNEBA", danhSachPhim)
     return (
