@@ -11,6 +11,7 @@ export default function Cinemas(props) {
         dispatch(await layTatCaThongTinHeThongRapApi())
     }, [])
 
+    console.log('sthmnm')
     console.log("TAT CA", tatCaThongTinHeThongRap)
     console.log("danhSachPhimNEBA", danhSachPhim)
 
@@ -79,3 +80,5 @@ export default function Cinemas(props) {
 
     )
 }
+
+
