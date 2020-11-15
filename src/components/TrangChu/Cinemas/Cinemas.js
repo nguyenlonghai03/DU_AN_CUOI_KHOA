@@ -8,6 +8,7 @@ const sdf = () => { }
 const hello = () => { }
 
 export default function Cinemas(props) {
+    const duc2 = () => { }
     const { tatCaThongTinHeThongRap, danhSachPhim } = useSelector(state => state.QuanLyPhimReducer)
     const dispatch = useDispatch();
     useEffect(async () => {
