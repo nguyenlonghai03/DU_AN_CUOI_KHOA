@@ -11,10 +11,13 @@ export default function Cinemas(props) {
         dispatch(await layTatCaThongTinHeThongRapApi())
     }, [])
 
+<<<<<<< HEAD
+    console.log("branchLongHai")
+=======
     console.log("hai2")
+>>>>>>> master
     console.log("TAT CA", tatCaThongTinHeThongRap)
     console.log("danhSachPhimNEBA", danhSachPhim)
-
     return (
         <div style={{ fontSize: "15px" }} className="cinemas container-fluid bg-dark py-5">
             <div className="container text-center ">
