@@ -67,7 +67,7 @@ export const layDanhSachPhimTheoCumRapApi = async (maHeThongRap) => {
     return async dispatch => {
         try {
             let { data, status } = await Axios({
-                url: `https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${maHeThongRap}&maNhom=GP03`,
+                url: `https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${maHeThongRap}&maNhom=GP01`,
                 method: 'GET'
             })
             // console.log("DANH SACH PHIM THEO CUM", data[0].lstCumRap[0].danhSachPhim)
