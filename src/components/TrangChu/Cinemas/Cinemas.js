@@ -52,7 +52,7 @@ export default function Cinemas(props) {
         })
     }
     const renderPhimTheoCumRap = () => {
-        return phimTheoCumRap?.map((phim, index) => {
+        return phimTheoCumRap?.slice(0, 5).map((phim, index) => {
             return <div key={index} className="d-flex m-2">
                 <div>
                     <img src={phim.hinhAnh} style={{ width: 50, height: 50 }} alt={phim.hinhAnh} />
