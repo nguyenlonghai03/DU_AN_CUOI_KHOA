@@ -42,6 +42,27 @@ export const layThongTinHeThongRapApi = async () => {
 }
 
 
+export const layThongTinHeThongRapApiiii = async () => {
+    return async dispatch => {
+        try {
+            let { data, status } = await Axios({
+                url: `https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinHeThongRap`,
+                method: 'GET'
+            })
+            if (status === 200) {
+                dispatch({
+                    type: 'LAY_THONG_TIN_HE_THONG_RAP',
+                    thongTinHeThongRap: data
+                })
+            }
+            // console.log("THONG TIN HE THONG RAP", data)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+}
+
+
 export const layThongTinCumRapTheoHeThongApi = (maHeThongRap) => {
     return dispatch => {
         let promise = Axios({
