@@ -44,10 +44,10 @@ export default function Header() {
             </a>
             <div className="dropdown-menu" aria-labelledby="dropdownId">
               <a className="dropdown-item" href="#">
-                Action 1
+                kkkkkkkkkkkk
               </a>
               <a className="dropdown-item" href="#">
-                Action 2
+                ggggggggggggggg
               </a>
             </div>
           </li>

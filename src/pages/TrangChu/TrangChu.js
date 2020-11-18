@@ -10,7 +10,7 @@ export default function TrangChu() {
     return (
         <div>
             <Carousel />
-            <NewTrailer />
+            {/* <NewTrailer /> */}
 
             <VideoBG />
             <ListFilm />

@@ -1,81 +1,90 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { layDanhSachPhimTheoMaCumRapApi, layTatCaThongTinHeThongRapApi } from '../../../redux/actions/QuanLyPhimActions';
 import { NavLink } from 'react-router-dom'
 import moment from 'moment'
+import { layDanhSachPhimTheoCumRapApi, layPhimTheoCumRap, layThongTinCumRapTheoHeThongApi, layThongTinHeThongRapApi } from '../../../redux/actions/QuanLyPhimActions';
+
 
 export default function Cinemas(props) {
-    const { tatCaThongTinHeThongRap, danhSachPhim } = useSelector(state => state.QuanLyPhimReducer)
+    const { thongTinHeThongRap, cumRapTheoHeThong, phimTheoCumRap, phimTheoHeThongRap } = useSelector(state => state.QuanLyPhimReducer);
     const dispatch = useDispatch();
-    useEffect(async () => {
-        dispatch(await layTatCaThongTinHeThongRapApi())
-    }, [])
 
-    console.log("TAT CA", tatCaThongTinHeThongRap)
-    console.log("danhSachPhimNEBA", danhSachPhim)
+    useEffect(async () => {
+        dispatch(await layThongTinHeThongRapApi());
+    }, [])
+    useEffect(() => {
+        dispatch(layThongTinCumRapTheoHeThongApi(thongTinHeThongRap[0]?.maHeThongRap))
+    }, [thongTinHeThongRap])
+    useEffect(async () => {
+        dispatch(await layDanhSachPhimTheoCumRapApi(thongTinHeThongRap[0]?.maHeThongRap))
+    }, [thongTinHeThongRap])
+
+    useEffect(async () => {
+        dispatch(await layPhimTheoCumRap(cumRapTheoHeThong[0]?.maCumRap))
+    }, [cumRapTheoHeThong])
+
+
+
+    // const [cumRapTheoHeThong, setCumRapTheoHeThong] = useState([cumRapTheoHeThong]);
+    console.log("thongTinHeThongRap", thongTinHeThongRap)
+    console.log("cumRapTheoHeThong", cumRapTheoHeThong)
+    console.log("phimTheoCumRap", phimTheoCumRap)
+    console.log("phimTheoHeThongRap", phimTheoHeThongRap)
+
+
+    const renderThongTinHeThongRap = () => {
+        return thongTinHeThongRap?.map((heThongRap, index) => {
+            return <img className="m-3" type="button" key={index} src={heThongRap.logo} style={{ width: 50, height: 50 }} onClick={
+                async () => {
+                    dispatch(await layThongTinCumRapTheoHeThongApi(heThongRap.maHeThongRap));
+                    dispatch(await layDanhSachPhimTheoCumRapApi(heThongRap.maHeThongRap))
+                }} />
+        })
+
+    }
+    const renderCumRapTheoHeThong = () => {
+        return cumRapTheoHeThong?.slice(0, 5).map((cumRap, index) => {
+            return <div key={index}>
+                <a onClick={() => {
+                    dispatch(layPhimTheoCumRap(cumRap.maCumRap))
+                }} type="button">{cumRap.tenCumRap}</a>
+                <p>{cumRap.diaChi}</p>
+            </div>
+        })
+    }
+    const renderPhimTheoCumRap = () => {
+        return phimTheoCumRap?.slice(0, 5).map((phim, index) => {
+            return <div key={index} className="d-flex m-2">
+                <div>
+                    <img src={phim.hinhAnh} style={{ width: 50, height: 50 }} alt={phim.hinhAnh} />
+                </div>
+                <div className="d-flex flex-column text-left px-4">
+                    <p>{phim.tenPhim}</p>
+                    <p className="d-flex">{phim.lstLichChieuTheoPhim?.slice(0, 5).map((lichChieu, index) => {
+                        return <span>{moment(lichChieu?.ngayChieuGioChieu).format('h:mm a')}</span>
+                    })}</p>
+                </div>
+            </div>
+        })
+    }
 
     return (
         <div style={{ fontSize: "15px" }} className="cinemas container-fluid bg-dark py-5">
             <div className="container text-center ">
                 <div className="row bg-light text-dark py-5">
-                    <div className="nav flex-column nav-pills col-2" role="tablist" d="v-pills-tab" aria-orientation="vertical" >
-                        {tatCaThongTinHeThongRap?.map((heThongRap, index) => {
-                            console.log(heThongRap)
-                            let maCumRap = heThongRap.lstCumRap.map((cumRap, index) => {
-                                return (cumRap.maCumRap)
-                            })
-                            {/* console.log("maCumRap", maCumRap[0]) */ }
-
-                            let active = index === 0 ? 'active' : '';
-                            return <a onClick={() => {
-                                dispatch(layDanhSachPhimTheoMaCumRapApi(maCumRap[0]))
-                            }} className={`nav-link ${active}`} data-toggle="pill" href={`#${heThongRap.maHeThongRap}`} role="tab" aria-controls="v-pills-home" aria-selected="true">
-                                <img src={heThongRap.logo} alt={heThongRap.logo} style={{ width: 50, height: 50 }} />
-                            </a>
-                        })}
+                    <div className="d-flex flex-column col-md-2" >
+                        {renderThongTinHeThongRap()}
                     </div>
-                    <div className="col-4 tab-content">
-                        {tatCaThongTinHeThongRap.map((heThongRap, index) => {
-                            let active = index === 0 ? 'active show' : '';
-                            return <div key={index} id={heThongRap.maHeThongRap} className={`nav tab-pane fade ${active}`} role="tabpanel" aria-labelledby="v-pills-home-tab">
-                                {heThongRap.lstCumRap.slice(0, 5).map((cumRap, index) => {
-                                    let active = index === 0 ? "active" : '';
-                                    return <div key={index} className="text-left py-2 " >
-                                        <a onClick={() => {
-                                            dispatch(layDanhSachPhimTheoMaCumRapApi(cumRap.maCumRap))
-                                        }} className={`nav-link p-0 m-0 ${active}`} data-toggle="pill" href={`#${cumRap.maCumRap}`} role="tabpanel" aria-controls="v-pills-home" aria-labelledby="v-pills-home-tab">
-                                            <p className="p-0 m-0">{cumRap.tenCumRap}</p>
-                                        </a>
-                                        <p className="p-0 m-0">{cumRap.diaChi}</p>
-                                    </div>
-                                })}
-                            </div>
-                        })}
+                    <div className="col-md-4 " >
+                        {renderCumRapTheoHeThong()}
                     </div>
-
-                    <div className="col-6" className="tab-content">
-                        {danhSachPhim?.slice(0, 5).map((phim, index) => {
-                            return <div className="p-3 m-2" style={{ width: '300px', border: '1px solid black', borderRadius: '40px', overflow: 'hidden' }}>
-                                <div className="d-flex">
-                                    <img src={phim.hinhAnh} alt={phim.hinhAnh} style={{ width: 50, height: 50 }} />
-                                    <div className="pl-3" style={{ paddingTop: '13px' }}>
-                                        <p key={index}>{phim.tenPhim}</p>
-                                    </div>
-                                </div>
-
-                                <div className="row my-2">
-                                    <div className="col-12 d-flex">
-                                        {phim.lstLichChieuTheoPhim?.slice(0, 5).map((lichChieu, index) => {
-                                            return <NavLink key={index} to={'/chitietphongve/' + lichChieu.maLichChieu} className="col-2">{moment(lichChieu.ngayChieuGioChieu).format('hh:mm a')}</NavLink>
-                                        })}
-                                    </div>
-                                </div>
-                            </div>
-                        })}
+                    <div className="col-md-6" >
+                        {renderPhimTheoCumRap()}
                     </div>
                 </div>
             </div>
         </div>
-
     )
 }
+
+
