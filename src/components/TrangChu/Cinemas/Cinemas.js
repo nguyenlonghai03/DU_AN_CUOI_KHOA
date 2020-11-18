@@ -33,16 +33,17 @@ export default function Cinemas(props) {
 
 
     const renderThongTinHeThongRap = () => {
-        return thongTinHeThongRap.map((heThongRap, index) => {
-            return <img className="m-3" type="button" key={index} src={heThongRap.logo} style={{ width: 50, height: 50 }} onClick={async () => {
-                dispatch(await layThongTinCumRapTheoHeThongApi(heThongRap.maHeThongRap));
-                dispatch(await layDanhSachPhimTheoCumRapApi(heThongRap.maHeThongRap))
-            }} />
+        return thongTinHeThongRap?.map((heThongRap, index) => {
+            return <img className="m-3" type="button" key={index} src={heThongRap.logo} style={{ width: 50, height: 50 }} onClick={
+                async () => {
+                    dispatch(await layThongTinCumRapTheoHeThongApi(heThongRap.maHeThongRap));
+                    dispatch(await layDanhSachPhimTheoCumRapApi(heThongRap.maHeThongRap))
+                }} />
         })
 
     }
     const renderCumRapTheoHeThong = () => {
-        return cumRapTheoHeThong.slice(0, 5).map((cumRap, index) => {
+        return cumRapTheoHeThong?.slice(0, 5).map((cumRap, index) => {
             return <div key={index}>
                 <a onClick={() => {
                     dispatch(layPhimTheoCumRap(cumRap.maCumRap))
@@ -52,15 +53,15 @@ export default function Cinemas(props) {
         })
     }
     const renderPhimTheoCumRap = () => {
-        return phimTheoCumRap?.map((phim, index) => {
+        return phimTheoCumRap?.slice(0, 5).map((phim, index) => {
             return <div key={index} className="d-flex m-2">
                 <div>
                     <img src={phim.hinhAnh} style={{ width: 50, height: 50 }} alt={phim.hinhAnh} />
                 </div>
                 <div className="d-flex flex-column text-left px-4">
                     <p>{phim.tenPhim}</p>
-                    <p className="d-flex">{phim.lstLichChieuTheoPhim.slice(0, 5).map((lichChieu, index) => {
-                        return <span>{moment(lichChieu.ngayChieuGioChieu).format('h:mm a')}</span>
+                    <p className="d-flex">{phim.lstLichChieuTheoPhim?.slice(0, 5).map((lichChieu, index) => {
+                        return <span>{moment(lichChieu?.ngayChieuGioChieu).format('h:mm a')}</span>
                     })}</p>
                 </div>
             </div>
@@ -71,13 +72,13 @@ export default function Cinemas(props) {
         <div style={{ fontSize: "15px" }} className="cinemas container-fluid bg-dark py-5">
             <div className="container text-center ">
                 <div className="row bg-light text-dark py-5">
-                    <div className="d-flex flex-column col-2" >
+                    <div className="d-flex flex-column col-md-2" >
                         {renderThongTinHeThongRap()}
                     </div>
-                    <div className="col-4" >
+                    <div className="col-md-4 " >
                         {renderCumRapTheoHeThong()}
                     </div>
-                    <div className="col-6" >
+                    <div className="col-md-6" >
                         {renderPhimTheoCumRap()}
                     </div>
                 </div>
