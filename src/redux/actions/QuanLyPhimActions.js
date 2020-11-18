@@ -54,9 +54,11 @@ export const layThongTinCumRapTheoHeThongApi = (maHeThongRap) => {
                 cumRapTheoHeThong: res.data
             })
 
+
         }).catch(err => {
             console.log(err.response.data)
         })
+
 
 
     }
