@@ -182,12 +182,12 @@ import $ from "jquery";
           $(this).css(
             "transform",
             "rotate" +
-              axis +
-              "(" +
-              index * angle * angleMult +
-              "deg) translateZ(" +
-              depth +
-              "px)"
+            axis +
+            "(" +
+            index * angle * angleMult +
+            "deg) translateZ(" +
+            depth +
+            "px)"
           );
         });
 
@@ -227,12 +227,12 @@ import $ from "jquery";
           $(this).css(
             "transform",
             "rotate" +
-              axis +
-              "(" +
-              index * angle * angleMult +
-              "deg) translateZ(" +
-              depth +
-              "px)"
+            axis +
+            "(" +
+            index * angle * angleMult +
+            "deg) translateZ(" +
+            depth +
+            "px)"
           );
         });
 
