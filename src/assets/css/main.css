@@ -134,10 +134,6 @@ html, body {
   }
 }
 
-body {
-  background: #777;
-}
-
 .slider3d__inner, .slider3d__rotater, .slider3d__handle__inner, .slider3d__handle__rotater {
   position: relative;
   height: 100%;
