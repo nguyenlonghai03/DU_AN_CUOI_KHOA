@@ -2,19 +2,25 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { layDanhSachPhimApiAction } from '../../../redux/actions/QuanLyPhimActions';
 import moment from 'moment'
+import PopupVideo from '../../../templates/PopupVideo'
+
 
 
 export default function ListFilm() {
 
+
     const dsPhim = useSelector(state => state.QuanLyPhimReducer.dsPhim);
     const dispatch = useDispatch();
+
+    const [isOpen, setOpen] = useState(false)
+
 
 
     useEffect(() => {
         dispatch(layDanhSachPhimApiAction());
     }, [])
 
-    console.log(dsPhim);
+
 
     const renderDSPhim = () => {
         return dsPhim.map((phim, index) => {
@@ -23,6 +29,16 @@ export default function ListFilm() {
                 <div className="movieList__info">
                     <h4>{phim.tenPhim}</h4>
                     <p>{moment(phim.ngayKhoiChieu).format('hh:mm A')}</p>
+
+
+
+                    <div>
+                        <button type="button" className="btn btn-primary" onClick={() => setOpen(true)}>
+                            {phim.tenPhim}
+                        </button>
+
+                        <PopupVideo isOpen={isOpen} onClose={() => setOpen(false)} videoId="qwn7bRSH54U" />
+                    </div>
 
                 </div>
             </div>
