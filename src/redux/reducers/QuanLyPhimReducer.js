@@ -28,9 +28,6 @@ export const QuanLyPhimReducer = (state = stateDefault, action) => {
             return { ...state }
         }
         case 'LAY_PHIM_THEO_MA_CUM_RAP': {
-            // console.log()
-
-            console.log("ACTION", action)
             let item = state.phimTheoHeThongRap.find(item => item.maCumRap === action.maCumRap);
             state.phimTheoCumRap = item?.danhSachPhim;
             return { ...state }
