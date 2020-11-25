@@ -1,6 +1,4 @@
 import React from 'react';
-import Modal from '../../../HOC/Modal'
-
 
 export default function VideoBG() {
     return (
