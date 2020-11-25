@@ -13,6 +13,7 @@ export default function ListFilm() {
     const dispatch = useDispatch();
 
     const [isOpen, setOpen] = useState(false)
+    const [urlVideo, seturlVideo] = useState('')
 
 
 
@@ -20,6 +21,10 @@ export default function ListFilm() {
         dispatch(layDanhSachPhimApiAction());
     }, [])
 
+    const getIdVideo = (url) => {
+        var p = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+         return (url.match(p)) ? RegExp.$1 : false ;
+    }
 
 
     const renderDSPhim = () => {
@@ -33,11 +38,13 @@ export default function ListFilm() {
 
 
                     <div>
-                        <button type="button" className="btn btn-primary" onClick={() => setOpen(true)}>
-                            {phim.tenPhim}
+                        <button type="button" className="btn btn-primary" onClick={() => {
+                            setOpen(true);
+                            seturlVideo(getIdVideo(phim.trailer));
+                        }}>
+                        Video
                         </button>
 
-                        <PopupVideo isOpen={isOpen} onClose={() => setOpen(false)} videoId="qwn7bRSH54U" />
                     </div>
 
                 </div>
@@ -52,6 +59,7 @@ export default function ListFilm() {
                 <div className="container">
                     <div className="row">
                         {renderDSPhim()}
+                        <PopupVideo isOpen={isOpen} onClose={() => setOpen(false)} videoId={urlVideo} />
                     </div>
                 </div>
             </section>
