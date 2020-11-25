@@ -6,11 +6,16 @@
 @import "./Helper/mixin";
 
 @import './components/modal';
+@import '../../../node_modules/react-modal-video/scss/modal-video.scss';
 
 @import './Layouts/header';
 @import './Layouts/cinemas';
-///import ở đây
-@import "./Layouts/carousel"; ///import ở đây
+
+//pages
+@import './pages/phongve';
+
+//import ở đây
+@import "./Layouts/carousel";
 @import './Layouts/videohome';
 @import './Layouts/movileList';
 @import './Layouts/footer';
