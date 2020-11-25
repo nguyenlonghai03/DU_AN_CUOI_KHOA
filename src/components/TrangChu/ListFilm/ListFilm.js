@@ -4,9 +4,12 @@ import { layDanhSachPhimApiAction } from '../../../redux/actions/QuanLyPhimActio
 import $ from 'jquery';
 import moment from 'moment';
 import Slider from "react-slick";
+import PopupVideo from '../../../templates/PopupVideo'
+
 
 
 export default function ListFilm() {
+
 
     const dsPhim = useSelector(state => state.QuanLyPhimReducer.dsPhim);
     const dispatch = useDispatch();
@@ -16,11 +19,20 @@ export default function ListFilm() {
         rows: 2,
     }
 
+    const [isOpen, setOpen] = useState(false)
+    const [urlVideo, seturlVideo] = useState('')
+
+
+
     useEffect(() => {
         dispatch(layDanhSachPhimApiAction());
     }, [])
 
-    console.log('dsPhim', dsPhim);
+    const getIdVideo = (url) => {
+        var p = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+         return (url.match(p)) ? RegExp.$1 : false ;
+    }
+
 
     const renderDSPhim = () => {
         return dsPhim.map((phim, index) => {
@@ -29,6 +41,18 @@ export default function ListFilm() {
                 <div className="movieList__info">
                     <h4>{phim.tenPhim}</h4>
                     <p>{moment(phim.ngayKhoiChieu).format('hh:mm A')}</p>
+
+
+
+                    <div>
+                        <button type="button" className="btn btn-primary" onClick={() => {
+                            setOpen(true);
+                            seturlVideo(getIdVideo(phim.trailer));
+                        }}>
+                        Video
+                        </button>
+
+                    </div>
 
                 </div>
             </div>
@@ -43,6 +67,7 @@ export default function ListFilm() {
                     <Slider {...settingSlick}>
                         {renderDSPhim()}
                     </Slider>
+                        <PopupVideo isOpen={isOpen} onClose={() => setOpen(false)} videoId={urlVideo} />
                 </div>
             </section>
         </div>

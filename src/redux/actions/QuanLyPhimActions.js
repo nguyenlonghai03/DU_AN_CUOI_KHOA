@@ -42,27 +42,6 @@ export const layThongTinHeThongRapApi = async () => {
 }
 
 
-export const layThongTinHeThongRapApiiii = async () => {
-    return async dispatch => {
-        try {
-            let { data, status } = await Axios({
-                url: `https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinHeThongRap`,
-                method: 'GET'
-            })
-            if (status === 200) {
-                dispatch({
-                    type: 'LAY_THONG_TIN_HE_THONG_RAP',
-                    thongTinHeThongRap: data
-                })
-            }
-            // console.log("THONG TIN HE THONG RAP", data)
-        } catch (err) {
-            console.log(err)
-        }
-    }
-}
-
-
 export const layThongTinCumRapTheoHeThongApi = (maHeThongRap) => {
     return dispatch => {
         let promise = Axios({
@@ -114,5 +93,29 @@ export const layPhimTheoCumRap = (maCumRap) => {
             type: 'LAY_PHIM_THEO_MA_CUM_RAP',
             maCumRap
         })
+    }
+}
+
+export const layThongTinPhongVe = async (maLichChieu) => {
+
+    return async (dispatch) => {
+        try {
+
+            const { data, status } = await Axios({
+                url: `https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`,
+                methos: 'GET'
+            })
+
+            if (status === 200) {
+                dispatch({
+                    type: 'THONG_TIN_PHONG_VE',
+                    thongTinPhongVe: data
+                })
+            }
+
+        } catch (err) {
+            console.log(err);
+
+        }
     }
 }
