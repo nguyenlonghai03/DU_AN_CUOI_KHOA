@@ -2,7 +2,7 @@
 
 @import "./Helper/variable";
 @import "./base/reset";
-
+    
 @import "./Helper/mixin";
 
 @import './components/modal';
@@ -15,3 +15,4 @@
 @import './Layouts/movileList';
 @import './Layouts/footer';
 ///import ở đây
+@import './Layouts/filmDetail'
