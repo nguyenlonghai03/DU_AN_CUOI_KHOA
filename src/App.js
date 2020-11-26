@@ -17,7 +17,7 @@ function App() {
       <Switch>
 
         <HomeTemplate exact path="/home" Component={TrangChu} />
-        <HomeTemplate exact path="/chitietphim" Component={ChiTietPhim} />
+        <HomeTemplate exact path="/chitietphim/::maPhim" Component={ChiTietPhim} />
         <HomeTemplate exact path='/phongve/:maLichChieu' Component={PhongVe} />
 
 

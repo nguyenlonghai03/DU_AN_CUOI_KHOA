@@ -1,29 +1,50 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import $ from 'jquery'
-import Cinemas from '../../components/TrangChu/Cinemas/Cinemas';
+import { useSelector, useDispatch } from 'react-redux';
+import { layChiTietPhimApi } from '../../redux/actions/QuanLyPhimActions';
+import moment from 'moment'
+import { NavLink } from 'react-router-dom';
+
+
 export default function ChiTietPhim(props) {
+    console.log("PROPS", props);
+    const { maPhim } = props.match.params;
+    const dispatch = useDispatch();
+    console.log("maPhim", maPhim)
+
+    const { chiTietPhim } = useSelector(state => state.QuanLyPhimReducer)
+
+    useEffect(async () => {
+        dispatch(await layChiTietPhimApi(maPhim))
+    }, [])
+
+    console.log("chitietphim", chiTietPhim);
+
+
+
 
 
 
     return (
         <>
+
+
+
             <div>
                 <div className="Banner_sec" id="home">
                     <div className="bannerside">
                         <div className="Center">
                             <div className="leftside">
-                                <h3>Tên phim<span>Số sao đánh giá</span></h3>
-                                <p>November is a professional website template that is responsive and mobile friendly for
-            any device. This template is provided by templatemo.com</p>
-                                <p className="m-0 p-0">Thời lượng: 120p</p>
-                                <p>Ngày khởi chiếu</p>
-                                <a href="#about">Đặt vé</a>
+                                <h3>{chiTietPhim?.tenPhim}<span>Đánh giá: {chiTietPhim?.danhGia}</span></h3>
+                                <p>Mô tả: {chiTietPhim?.moTa}</p>
+                                <p className="m-0 p-0">Ngày khởi chiếu: {moment(chiTietPhim?.ngayKhoiChieu).format('MMMM Do YYYY')}</p>
+                                <a className="my-2" href="#about">Đặt vé</a>
                             </div>
                             <div className="rightside">
                                 <ul id="slider">
                                     <li>
                                         <div className="Slider">
-                                            <figure><img src="img/Slider-img1.jpg" alt="image" /></figure>
+                                            <figure><img src={chiTietPhim?.hinhAnh} style={{ width: '100%', height: "500px" }} alt="image" /></figure>
                                             <div className="text">
                                                 <div className="Icon">
                                                     <ul>
@@ -38,7 +59,7 @@ export default function ChiTietPhim(props) {
                                         </div>
                                     </li>
                                 </ul>
-                                <figure><img src="img/Shadow-img.png" alt="image" className="Shadow" /></figure>
+                                <figure><img src="../img/Shadow-img.png" alt="image" className="Shadow" /></figure>
                             </div>
                         </div>
                     </div>
@@ -47,23 +68,43 @@ export default function ChiTietPhim(props) {
 
                 <div className="bgcolor" />
             </div>
+
             <div className="bg-dark p-5">
                 <div className="row bg-light ">
                     <div className="col-3">
-                        <div className="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                            <a className="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
-                            <a className="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
-                            <a className="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
-                            <a className="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+                        <div className="nav flex-column nav-pills col-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            {chiTietPhim.heThongRapChieu?.map((heThongRap, index) => {
+                                let active = index === 0 ? 'active' : '';
+                                return <a key={index} className={'nav-link ' + active} id="v-pills-home-tab" data-toggle="pill" href={`#${heThongRap.maHeThongRap}`} role="tab" aria-controls="v-pills-home" aria-selected="true">
+                                    <img src={heThongRap.logo} alt={heThongRap.logo} style={{ width: 50, height: 50 }} /> {heThongRap.tenHeThongRap}
+                                </a>
+
+                            })}
                         </div>
                     </div>
-                    <div className="col-9">
-                        <div className="tab-content" id="v-pills-tabContent">
-                            <div className="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">...</div>
-                            <div className="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...</div>
-                            <div className="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
-                            <div className="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
-                        </div>
+                    <div className="tab-content col-9" id="v-pills-tabContent">
+
+                        {chiTietPhim.heThongRapChieu?.map((heThongRap, index) => {
+                            let active = index === 0 ? 'active' : '';
+
+                            return <div key={index} className={'tab-pane fade show' + active} id={heThongRap.maHeThongRap} role="tabpanel" aria-labelledby="v-pills-home-tab">
+                                {heThongRap.cumRapChieu?.map((cumRap, index) => {
+                                    return <div key={index}>
+                                        <p style={{ fontWeight: 'bold', fontSize: '25px' }}>
+                                            {cumRap.tenCumRap}
+                                        </p>
+                                        <div className="row">
+                                            {cumRap.lichChieuPhim?.slice(0, 12).map((lichChieu, index) => {
+                                                return <NavLink key={index} to={'/phongve/' + lichChieu.maLichChieu} className="col-2">
+                                                    {moment(lichChieu.ngayChieuGioChieu).format('hh:mm a')}
+
+                                                </NavLink>
+                                            })}
+                                        </div>
+                                    </div>
+                                })}
+                            </div>
+                        })}
                     </div>
                 </div>
             </div>
