@@ -87,7 +87,7 @@ export default function ChiTietPhim(props) {
                         {chiTietPhim.heThongRapChieu?.map((heThongRap, index) => {
                             let active = index === 0 ? 'active' : '';
 
-                            return <div key={index} className={'tab-pane fade show' + active} id={heThongRap.maHeThongRap} role="tabpanel" aria-labelledby="v-pills-home-tab">
+                            return <div key={index} className={`tab-pane fade show ${active}`} id={heThongRap.maHeThongRap} role="tabpanel" aria-labelledby="v-pills-home-tab">
                                 {heThongRap.cumRapChieu?.map((cumRap, index) => {
                                     return <div key={index}>
                                         <p style={{ fontWeight: 'bold', fontSize: '25px' }}>
