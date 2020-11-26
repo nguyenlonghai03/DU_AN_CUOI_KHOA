@@ -24,11 +24,8 @@
     "sass-loader": "^10.0.5",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.2.1",
-<<<<<<< HEAD
     "sweetalert2": "^10.10.1",
-=======
     "sudoslider": "^3.5.0",
->>>>>>> 3f8070464ef71750e65a148c4380ec79e5f80240
     "tailwindcss": "^1.9.6",
     "web-vitals": "^0.2.4"
   },

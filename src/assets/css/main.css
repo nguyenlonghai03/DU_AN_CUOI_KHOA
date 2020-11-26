@@ -124,7 +124,6 @@ input:checked ~ .modal .content {
   transition: color 0.5s ease 0.5s;
 }
 
-<<<<<<< HEAD
 .sth a {
   text-decoration: none;
   color: white !important;
@@ -142,7 +141,7 @@ input:checked ~ .modal .content {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-=======
+}
 @keyframes modal-video {
   from {
     opacity: 0;
@@ -253,7 +252,6 @@ input:checked ~ .modal .content {
   background: #fff;
   border-radius: 5px;
   margin-top: -6px;
->>>>>>> 3f8070464ef71750e65a148c4380ec79e5f80240
 }
 
 .cinemas {
@@ -835,7 +833,7 @@ img {
   height: auto;
   max-width: 100%;
   vertical-align: middle;
-  display: block;
+  /* display: block; */
 }
 
 figure {
