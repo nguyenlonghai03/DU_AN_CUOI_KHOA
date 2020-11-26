@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import Header from '../components/TrangChu/Header/Header';
+import Footer from '../components/TrangChu/Footer/Footer'
 
 
 
@@ -12,6 +13,7 @@ export const HomeTemplate = (props) => {
         return <>
             <Header />
             <Component {...propsRoute} />
+            <Footer />
         </>
     }} />
 }

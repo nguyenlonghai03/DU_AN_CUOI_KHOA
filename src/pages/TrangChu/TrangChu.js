@@ -16,7 +16,7 @@ export default function TrangChu() {
             <ListFilm />
 
             <Cinemas />
-            <Footer />
+            {/* <Footer /> */}
         </div>
     )
 }

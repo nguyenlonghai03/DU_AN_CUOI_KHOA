@@ -95,3 +95,47 @@ export const layPhimTheoCumRap = (maCumRap) => {
         })
     }
 }
+
+export const layThongTinPhongVe = async (maLichChieu) => {
+
+    return async (dispatch) => {
+        try {
+
+            const { data, status } = await Axios({
+                url: `https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`,
+                method: 'GET'
+            })
+
+            if (status === 200) {
+                dispatch({
+                    type: 'THONG_TIN_PHONG_VE',
+                    thongTinPhongVe: data
+                })
+            }
+
+        } catch (err) {
+            console.log(err);
+
+        }
+    }
+}
+
+
+export const layChiTietPhimApi = async (maPhim) => {
+    return async (dispatch) => {
+        try {
+            const { data, status } = await Axios({
+                url: `https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`,
+                method: 'GET'
+            })
+            if (status === 200) {
+                dispatch({
+                    type: 'LAY_CHI_TIET_PHIM',
+                    chiTietPhim: data
+                })
+            }
+        } catch (err) {
+            console.log(err)
+        }
+    }
+}

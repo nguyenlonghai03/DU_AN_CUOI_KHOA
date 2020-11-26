@@ -26,10 +26,10 @@ export default function Cinemas(props) {
 
 
     // const [cumRapTheoHeThong, setCumRapTheoHeThong] = useState([cumRapTheoHeThong]);
-    console.log("thongTinHeThongRap", thongTinHeThongRap)
-    console.log("cumRapTheoHeThong", cumRapTheoHeThong)
-    console.log("phimTheoCumRap", phimTheoCumRap)
-    console.log("phimTheoHeThongRap", phimTheoHeThongRap)
+    // console.log("thongTinHeThongRap", thongTinHeThongRap)
+    // console.log("cumRapTheoHeThong", cumRapTheoHeThong)
+    // console.log("phimTheoCumRap", phimTheoCumRap)
+    // console.log("phimTheoHeThongRap", phimTheoHeThongRap)
 
 
     const renderThongTinHeThongRap = () => {
@@ -86,5 +86,3 @@ export default function Cinemas(props) {
         </div>
     )
 }
-
-
