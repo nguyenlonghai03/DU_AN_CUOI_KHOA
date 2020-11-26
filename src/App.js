@@ -11,7 +11,6 @@ import TrangChu from "./pages/TrangChu/TrangChu";
 import { UserTemplate } from "./templates/UserTemplate";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
 import PhongVe from "./pages/PhongVe/PhongVe";
 
 function App() {
