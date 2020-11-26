@@ -5,7 +5,8 @@ const stateDefault = {
     phimTheoHeThongRap: [],
     phimTheoCumRap: [],
     thongTinPhongVe: {},
-    danhSachGheDangDat: []
+    danhSachGheDangDat: [],
+    chiTietPhim: {}
 
 }
 
@@ -47,6 +48,11 @@ export const QuanLyPhimReducer = (state = stateDefault, action) => {
                 dsGheDangDatUpdate.push(action.gheDangDat);
             }
             state.danhSachGheDangDat = dsGheDangDatUpdate;
+            return { ...state }
+        }
+        case 'LAY_CHI_TIET_PHIM': {
+            // console.log("ACTION", action.chiTietPhim)
+            state.chiTietPhim = action.chiTietPhim;
             return { ...state }
         }
 
