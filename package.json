@@ -21,6 +21,7 @@
     "redux-thunk": "^2.3.0",
     "sass-loader": "^10.0.5",
     "styled-components": "^5.2.1",
+    "sweetalert2": "^10.10.1",
     "tailwindcss": "^1.9.6",
     "web-vitals": "^0.2.4"
   },
