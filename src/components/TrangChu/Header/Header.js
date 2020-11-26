@@ -48,7 +48,8 @@ export default function Header() {
             </NavLink>
           </li>
         </ul>
-        <form className="form-inline my-2 my-lg-0">
+
+        {/* <form className="form-inline my-2 my-lg-0">
           <input className="form-control mr-sm-2" type="text" />
           <button
             className="btn btn-outline-success my-2 my-sm-0"
@@ -56,7 +57,7 @@ export default function Header() {
           >
             Đăng Nhập
           </button>
-        </form>
+        </form> */}
       </div>
     </nav>
   );
