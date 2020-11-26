@@ -55,13 +55,10 @@ nav ul li a {
 
 nav ul li a.active,
 nav ul li a:hover {
-<<<<<<< HEAD
 	color: red !important;
 	color: #000; 
-=======
 	background: #ff0;
 	color: #000;
->>>>>>> 3f8070464ef71750e65a148c4380ec79e5f80240
 }
 
 nav.navbar{
