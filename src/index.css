@@ -25,7 +25,7 @@ nav a.logo {
 	color: #fff;
 	font-size: 30px;
 	font-weight: bold;
-	text-transform: uppercase;
+	/* text-transform: uppercase; */
 	text-decoration: none;
 }
 nav a.logo:hover {
@@ -47,14 +47,16 @@ nav ul li a {
 	padding:  0 30px;
 	color: #fff;
 	text-decoration: none;
-	text-transform: uppercase;
+	/* text-transform: uppercase; */
 	font-size: 16px;
-	font-weight: bold;
+	font-weight: 600;
 	transition: .3s;
 }
 
 nav ul li a.active,
 nav ul li a:hover {
+	color: red !important;
+	color: #000; 
 	background: #ff0;
 	color: #000;
 }
