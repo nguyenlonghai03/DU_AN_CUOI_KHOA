@@ -5,6 +5,8 @@ import $ from 'jquery';
 import moment from 'moment';
 import Slider from "react-slick";
 import PopupVideo from '../../../templates/PopupVideo'
+import { NavLink } from 'react-router-dom'
+
 
 
 
@@ -33,7 +35,7 @@ export default function ListFilm() {
 
     const getIdVideo = (url) => {
         var p = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
-         return (url.match(p)) ? RegExp.$1 : false ;
+        return (url.match(p)) ? RegExp.$1 : false;
     }
 
 
@@ -52,9 +54,9 @@ export default function ListFilm() {
                             setOpen(true);
                             seturlVideo(getIdVideo(phim.trailer));
                         }}>
-                        Video
+                            Video
                         </button>
-
+                        <NavLink className="btn btn-success" to={`/chitietphim/:${phim.maPhim}`}>Chi tiết</NavLink>
                     </div>
 
                 </div>
@@ -70,7 +72,7 @@ export default function ListFilm() {
                     <Slider {...settingSlick}>
                         {renderDSPhim()}
                     </Slider>
-                        <PopupVideo isOpen={isOpen} onClose={() => setOpen(false)} videoId={urlVideo} />
+                    <PopupVideo isOpen={isOpen} onClose={() => setOpen(false)} videoId={urlVideo} />
                 </div>
             </section>
         </div>
