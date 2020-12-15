@@ -12,6 +12,9 @@ export default function ListFilm() {
 
 
     const dsPhim = useSelector(state => state.QuanLyPhimReducer.dsPhim);
+
+
+
     const dispatch = useDispatch();
     let settingSlick = {
         slidesToShow: 4,
