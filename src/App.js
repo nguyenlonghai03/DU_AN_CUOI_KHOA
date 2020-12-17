@@ -12,6 +12,7 @@ import { UserTemplate } from "./templates/UserTemplate";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import PhongVe from "./pages/PhongVe/PhongVe";
+import ThongTinCaNhan from "./pages/ThongTinCaNhan/ThongTinCaNhan";
 
 function App() {
   return (
@@ -23,6 +24,11 @@ function App() {
           path="/chitietphim/::maPhim"
           Component={ChiTietPhim}
         />
+        <HomeTemplate
+          exact
+          path="/thongtincanhan"
+          Component={ThongTinCaNhan}
+        />
         <HomeTemplate exact path="/phongve/:maLichChieu" Component={PhongVe} />
 
         <HomeTemplate exact path="/" Component={TrangChu} />
@@ -33,6 +39,10 @@ function App() {
           Component={DangNhap}
         ></UserTemplate>
         <UserTemplate exact path="/dangky" Component={DangKy}></UserTemplate>
+
+        {/* <Route></Route> */}
+
+
       </Switch>
     </BrowserRouter>
   );

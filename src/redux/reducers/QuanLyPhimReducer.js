@@ -2,11 +2,15 @@ const stateDefault = {
     dsPhim: [],
     thongTinHeThongRap: [],
     cumRapTheoHeThong: [],
-    phimTheoHeThongRap: [],
+    // phimTheoHeThongRap: [],
     phimTheoCumRap: [],
     thongTinPhongVe: {},
     danhSachGheDangDat: [],
-    chiTietPhim: {}
+    chiTietPhim: {},
+    layTatCa: [],
+    phimTheoHeThong: [],
+
+
 
 }
 
@@ -25,7 +29,7 @@ export const QuanLyPhimReducer = (state = stateDefault, action) => {
             return { ...state }
         }
         case 'LAY_PHIM_THEO_CUM_RAP': {
-            // console.log("action", action)
+            // console.log("ACCCTION", action)
             state.phimTheoHeThongRap = action.phimTheoHeThongRap[0].lstCumRap
             // state.phimTheoCumRap = action.phimTheoHeThongRap[0].lstCumRap[0].danhSachPhim
             return { ...state }
@@ -55,6 +59,39 @@ export const QuanLyPhimReducer = (state = stateDefault, action) => {
             state.chiTietPhim = action.chiTietPhim;
             return { ...state }
         }
+        case 'LAY_TAT_CA': {
+            state.layTatCa = action.layTatCa
+            state.phimTheoHeThong = action.layTatCa[0].lstCumRap[0].danhSachPhim
+            return { ...state }
+        }
+        case 'LAY_PHIM_THEO_HE_THONG': {
+
+
+            // console.log("ACCCTIN", action)
+
+            state.layTatCa.forEach((item, index) => {
+                if (item.maHeThongRap === action.maHeThongRap) {
+                    state.phimTheoHeThong = state.layTatCa[index].lstCumRap[0].danhSachPhim
+                }
+            })
+
+            return { ...state }
+
+
+
+        }
+        case 'LAY_PHIM_THEO_CUM': {
+            // console.log("ACTION", action)
+            state.layTatCa.forEach((item, vitri) => {
+                item.lstCumRap.forEach((cum, index) => {
+                    if (cum.maCumRap === action.maCum) {
+                        state.phimTheoHeThong = state.layTatCa[vitri].lstCumRap[index].danhSachPhim
+                    }
+                })
+            })
+            return { ...state }
+        }
+
 
 
 
