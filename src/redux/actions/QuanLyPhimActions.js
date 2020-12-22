@@ -81,6 +81,7 @@ export const layDanhSachPhimTheoCumRapApi = async (maHeThongRap) => {
                     phimTheoHeThongRap: data
                 })
             }
+            console.log("DATAAAA", data)
         } catch (err) {
             console.log(err)
         }
@@ -139,3 +140,27 @@ export const layChiTietPhimApi = async (maPhim) => {
         }
     }
 }
+
+
+
+
+export const layTatCaApi = async () => {
+    return async (dispatch) => {
+        try {
+            const { data, status } = await Axios({
+                url: 'https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP03',
+                method: 'GET'
+            })
+            if (status === 200) {
+                dispatch({
+                    type: 'LAY_TAT_CA',
+                    layTatCa: data
+                })
+            }
+            console.log("DATANE", data)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+}
+

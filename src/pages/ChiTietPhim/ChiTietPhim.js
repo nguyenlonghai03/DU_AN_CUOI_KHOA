@@ -27,9 +27,6 @@ export default function ChiTietPhim(props) {
 
     return (
         <>
-
-
-
             <div>
                 <div className="Banner_sec" id="home">
                     <div className="bannerside">
