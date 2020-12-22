@@ -50,8 +50,11 @@ export default function ThongTinCaNhan() {
                                             <span>Tên phim</span>
                                             <span>Thời lượng</span>
                                             <button className="btn btn-danger" style={{ cursor: "pointer" }}>Hủy</button>
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> master
                                         </div>
                                     </div>
                                 </div>

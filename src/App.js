@@ -13,11 +13,14 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import PhongVe from "./pages/PhongVe/PhongVe";
 import ThongTinCaNhan from "./pages/ThongTinCaNhan/ThongTinCaNhan";
+<<<<<<< HEAD
 import AdminTemplate from "./templates/AdminTemplate";
 import QuanLyNguoiDung from "./components/Admin/QuanLyNguoiDung";
 import ThemMoiNguoiDung from "./components/Admin/ThemMoiNguoiDung";
 import ThemPhim from "./components/Admin/ThemPhim";
 import QuanLyPhim from "./components/Admin/QuanLyPhim";
+=======
+>>>>>>> master
 
 function App() {
   return (
@@ -45,13 +48,8 @@ function App() {
         ></UserTemplate>
         <UserTemplate exact path="/dangky" Component={DangKy}></UserTemplate>
 
+        {/* <Route></Route> */}
 
-
-        {/* <Route exact path="/admin" component={AdminTemplate}></Route> */}
-        <AdminTemplate exact path="/admin/quanlynguoidung" Component={QuanLyNguoiDung} />
-        <AdminTemplate exact path="/admin/themnguoidung" Component={ThemMoiNguoiDung} />
-        <AdminTemplate exact path="/admin/quanlyphim" Component={QuanLyPhim} />
-        <AdminTemplate exact path="/admin/themphim" Component={ThemPhim} />
 
       </Switch>
     </BrowserRouter>
