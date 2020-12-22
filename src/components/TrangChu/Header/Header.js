@@ -1,9 +1,26 @@
-import React from "react";
+import React, {useState} from "react";
 import "./hideHeader";
 import * as $ from "jquery";
 import { NavLink } from "react-router-dom";
+import Modal from './Modal';
+import DangKy from '../../../pages/TrangChu/DangKy'
+import DangNhap from '../../../pages/TrangChu/DangNhap'
+
+
+const DangKyWithModal = new Modal('Dang Ky', DangKy)
+const DangNhapWithModal = new Modal('Dang Ky', DangNhap)
 
 export default function Header() {
+
+  const [state, setState] = useState('DK');
+  const renderModal = () => {
+    if(state === 'DK') {
+      return DangKyWithModal;
+    } else {
+      return DangNhapWithModal;
+    }
+  }
+
   return (
     <nav className="sth navbar navbar-expand-sm text-light">
       <a className="navbar-brand " href="#">
@@ -58,6 +75,14 @@ export default function Header() {
             Đăng Nhập
           </button>
         </form> */}
+
+        <button className="btn btn-danger m-2" data-toggle="modal" data-target="#modelId" onClick={() => {
+                setState('DK')
+            }}>Dang ky</button>
+        <button className="btn btn-primary m-2" data-toggle="modal" data-target="#modelId" onClick={() => {
+                setState('DN')
+            }}>Dang nhap</button>
+        {renderModal()}
       </div>
     </nav>
   );
