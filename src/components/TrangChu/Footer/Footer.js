@@ -1,6 +1,5 @@
 import React from "react";
-// import style from "./Footer.css";
-
+import './Footer.css'
 export default function Footer() {
   return (
     // <div className="container-fuild color-black">

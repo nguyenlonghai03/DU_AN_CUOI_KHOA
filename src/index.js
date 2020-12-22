@@ -5,7 +5,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Router } from 'react-router-dom'
 
-
 // Cấu hình redux
 import { applyMiddleware, createStore } from 'redux'
 import { Provider } from 'react-redux'
@@ -14,6 +13,12 @@ import reduxThunk from 'redux-thunk';
 import { history } from './util/history'
 
 const store = createStore(rootReducer, applyMiddleware(reduxThunk))
+
+
+
+
+
+
 
 
 ReactDOM.render(

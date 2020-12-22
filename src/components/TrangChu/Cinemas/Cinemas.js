@@ -1,59 +1,61 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import moment from 'moment'
-import { layDanhSachPhimTheoCumRapApi, layPhimTheoCumRap, layThongTinCumRapTheoHeThongApi, layThongTinHeThongRapApi } from '../../../redux/actions/QuanLyPhimActions';
+import { layTatCaApi } from '../../../redux/actions/QuanLyPhimActions';
+import { QuanLyPhimReducer } from '../../../redux/reducers/QuanLyPhimReducer';
 
 
 export default function Cinemas(props) {
-    const { thongTinHeThongRap, cumRapTheoHeThong, phimTheoCumRap, phimTheoHeThongRap } = useSelector(state => state.QuanLyPhimReducer);
+    const { layTatCa, phimTheoHeThong } = useSelector(state => state.QuanLyPhimReducer)
     const dispatch = useDispatch();
 
     useEffect(async () => {
-        dispatch(await layThongTinHeThongRapApi());
+        dispatch(await layTatCaApi())
+
     }, [])
-    useEffect(() => {
-        dispatch(layThongTinCumRapTheoHeThongApi(thongTinHeThongRap[0]?.maHeThongRap))
-    }, [thongTinHeThongRap])
-    useEffect(async () => {
-        dispatch(await layDanhSachPhimTheoCumRapApi(thongTinHeThongRap[0]?.maHeThongRap))
-    }, [thongTinHeThongRap])
 
-    useEffect(async () => {
-        dispatch(await layPhimTheoCumRap(cumRapTheoHeThong[0]?.maCumRap))
-    }, [cumRapTheoHeThong])
+    // console.log("LAY_TAT_CA", layTatCa);
+    // console.log("PHIM_THEO_HE_THONG", phimTheoHeThong);
 
 
+    const renderLogo = () => {
+        return layTatCa?.map((heThongRap, index) => {
+            let active = index === 0 ? 'active' : '';
+            return <a onClick={() => {
+                dispatch({
+                    type: 'LAY_PHIM_THEO_HE_THONG',
+                    maHeThongRap: heThongRap.maHeThongRap
+                })
+            }} className={`nav-link ${active}`} id="v-pills-home-tab" data-toggle="pill" href={`#${heThongRap.maHeThongRap}`} role="tab" aria-controls="v-pills-home" aria-selected="true">
+                <img src={heThongRap.logo} style={{ width: "50px", height: "50px" }} />
+            </a>
 
-    // const [cumRapTheoHeThong, setCumRapTheoHeThong] = useState([cumRapTheoHeThong]);
-    // console.log("thongTinHeThongRap", thongTinHeThongRap)
-    // console.log("cumRapTheoHeThong", cumRapTheoHeThong)
-    // console.log("phimTheoCumRap", phimTheoCumRap)
-    // console.log("phimTheoHeThongRap", phimTheoHeThongRap)
-
-
-    const renderThongTinHeThongRap = () => {
-        return thongTinHeThongRap?.map((heThongRap, index) => {
-            return <img className="m-3" type="button" key={index} src={heThongRap.logo} style={{ width: 50, height: 50 }} onClick={
-                async () => {
-                    dispatch(await layThongTinCumRapTheoHeThongApi(heThongRap.maHeThongRap));
-                    dispatch(await layDanhSachPhimTheoCumRapApi(heThongRap.maHeThongRap))
-                }} />
         })
-
     }
-    const renderCumRapTheoHeThong = () => {
-        return cumRapTheoHeThong?.slice(0, 5).map((cumRap, index) => {
-            return <div key={index}>
-                <a onClick={() => {
-                    dispatch(layPhimTheoCumRap(cumRap.maCumRap))
-                }} type="button">{cumRap.tenCumRap}</a>
-                <p>{cumRap.diaChi}</p>
+
+    const renderCumRap = () => {
+        return layTatCa.map((heThongRap, index) => {
+            let active = index === 0 ? 'active' : '';
+            return <div className={`tab-pane fade show ${active}`} id={heThongRap.maHeThongRap} role="tabpanel" aria-labelledby="v-pills-home-tab">
+                {heThongRap.lstCumRap.slice(0, 5).map((cumRap, index) => {
+                    return <div>
+                        <a onClick={() => {
+                            dispatch({
+                                type: 'LAY_PHIM_THEO_CUM',
+                                maCum: cumRap.maCumRap
+                            })
+                        }} className="btn btn-success">
+                            {cumRap.tenCumRap}
+                        </a>
+                    </div>
+                })}
             </div>
         })
     }
-    const renderPhimTheoCumRap = () => {
-        return phimTheoCumRap?.slice(0, 5).map((phim, index) => {
+
+    const renderPhim = () => {
+        return (phimTheoHeThong?.slice(0, 5).map((phim, index) => {
             return <div key={index} className="d-flex m-2">
                 <div>
                     <img src={phim.hinhAnh} style={{ width: 50, height: 50 }} alt={phim.hinhAnh} />
@@ -66,23 +68,35 @@ export default function Cinemas(props) {
                 </div>
             </div>
         })
+        )
+
     }
 
+
+
+
     return (
-        <div style={{ fontSize: "15px" }} className="cinemas container-fluid bg-dark py-5">
-            <div className="container text-center ">
-                <div className="row bg-light text-dark py-5">
-                    <div className="d-flex flex-column col-md-2" >
-                        {renderThongTinHeThongRap()}
-                    </div>
-                    <div className="col-md-4 " >
-                        {renderCumRapTheoHeThong()}
-                    </div>
-                    <div className="col-md-6" >
-                        {renderPhimTheoCumRap()}
+        <>
+            <div style={{ fontSize: "15px" }} className="cinemas container-fluid bg-dark py-5">
+                <div className="container text-center ">
+                    <div className="row bg-light text-dark py-5">
+                        <div className="nav nav-pills flex-column col-md-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            {renderLogo()}
+                        </div>
+                        <div className="tab-content col-md-4" id="v-pills-tabContent" >
+                            {renderCumRap()}
+                        </div>
+                        <div className="col-md-6" >
+                            {renderPhim()}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+
+        </>
     )
+
+
+
+
 }
