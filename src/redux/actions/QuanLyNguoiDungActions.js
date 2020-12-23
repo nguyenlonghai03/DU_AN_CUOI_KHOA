@@ -2,6 +2,9 @@ import axios from "axios";
 import { ACCESSTOKEN, DOMAIN, USER_LOGIN } from "../../util/Confit";
 import swal from "sweetalert2";
 import { history } from "../../util/history";
+import Axios from "axios";
+
+
 export const dangNhapAction = (userLogin) => {
   return (dispatch) => {
     const promise = axios({
@@ -28,3 +31,51 @@ export const dangNhapAction = (userLogin) => {
       });
   };
 };
+
+
+//LẤY DANH SÁCH NGƯỜI DÙNG
+
+export const layDanhSachNguoiDung = async () => {
+  return async (dispatch) => {
+    try {
+      const { data, status } = await Axios({
+        url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP03`,
+        method: 'GET'
+      })
+      // console.log("DATA", data)
+
+      if (status === 200) {
+        dispatch({
+          type: 'LAY_DANH_SACH_NGUOI_DUNG',
+          danhSachNguoiDung: data
+        })
+      }
+
+    } catch (err) {
+      console.log(err)
+    }
+  }
+}
+
+
+//TÌM KIẾM NGƯỜI DÙNG
+export const timKiemNguoiDung = async (tuKhoa) => {
+
+  return async (dispatch) => {
+    try {
+      const { data, status } = await Axios({
+        url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/TimKiemNguoiDung?MaNhom=GP03&tuKhoa=${tuKhoa}`,
+        method: 'GET'
+      })
+      if (status === 200) {
+        console.log("data", data)
+        dispatch({
+          type: 'TIM_KIEM_NGUOI_DUNG',
+          timKiem: data
+        })
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+}
