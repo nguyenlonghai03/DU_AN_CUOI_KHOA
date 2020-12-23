@@ -1,8 +1,41 @@
-import React from 'react'
-
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { layDanhSachNguoiDung, timKiemNguoiDung } from '../../redux/actions/QuanLyNguoiDungActions';
+import { NavLink } from 'react-router-dom'
 export default function QuanLyNguoiDung() {
+
+
+    const { danhSachNguoiDung } = useSelector(state => state.QuanLyPhimReducer)
+    const dispatch = useDispatch();
+
+    useEffect(async () => {
+        dispatch(await layDanhSachNguoiDung())
+    }, [])
+    console.log("danhSach", danhSachNguoiDung);
+
+    const handleTimKiem = () => {
+        let valueInputTag = document.getElementById('inputTimKiem').value;
+        console.log("VALUE", valueInputTag)
+        return valueInputTag;
+    }
+
+
+
+
     return (
         <>
+            <div className="d-flex my-2">
+                <NavLink to="/admin/themnguoidung" className="btn btn-success ml-4">Thêm người dùng</NavLink>
+                <input id="inputTimKiem" className="form-control my-2 mx-2" type="text" style={{ width: '600px', height: '30px' }}></input>
+                <i className="fa fa-search my-3 mx-2" onClick={async () => {
+                    // await handleTimKiem();
+                    dispatch(await timKiemNguoiDung(handleTimKiem()));
+                }} type="button"></i>
+                <button className="btn btn-primary" onClick={async () => {
+                    dispatch(await layDanhSachNguoiDung())
+                }}>Load toàn bộ danh sách</button>
+
+            </div>
             <table>
                 <thead>
                     <tr>
@@ -12,29 +45,33 @@ export default function QuanLyNguoiDung() {
                         <th>Họ tên</th>
                         <th>Email</th>
                         <th>Số điện thoại</th>
+                        <th>Mã loại người dùng</th>
                         <th>Thao tác</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>LongHai</td>
-                        <td>123456</td>
-                        <td>
-                            {/* <span className="dot">
+                {danhSachNguoiDung.map((nguoiDung, index) => {
+                    return <tbody key={index}>
+                        <tr>
+                            <td>{index + 1}</td>
+                            <td>{nguoiDung.taiKhoan}</td>
+                            <td>{nguoiDung.matKhau}</td>
+                            <td>
+                                {/* <span className="dot">
                                 <i className="bg-success" />
                       Completed
                     </span> */}
-                    Nguyễn Long Hải
-                        </td>
-                        <td>nguyenlonghai03@gmail.com</td>
-                        <td>065189541652</td>
-                        <td>
-                            <button className="btn btn-success">Sửa</button>
-                            <button className="btn btn-danger">Xóa</button>
-                        </td>
-                    </tr>
-                </tbody>
+                                {nguoiDung.hoTen}
+                            </td>
+                            <td>{nguoiDung.email}</td>
+                            <td>{nguoiDung.soDt}</td>
+                            <td>{nguoiDung.maLoaiNguoiDung}</td>
+                            <td>
+                                <button className="btn btn-success">Sửa</button>
+                                <button className="btn btn-danger">Xóa</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                })}
             </table>
         </>
     )
