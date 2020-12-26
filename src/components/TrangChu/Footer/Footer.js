@@ -1,32 +1,13 @@
 import React from "react";
-import './Footer.css'
+// import './Footer.css'
 export default function Footer() {
   return (
-    // <div className="container-fuild color-black">
-    //     <div className="footer">
-    //         <div className="row text-center">
-    //             <div className="col-4">
-    //                 <img src={require('../../../assets/img/hinhmovie.jpg')} />
-    //             </div>
-    //             <div className="col-4">
-    //                 <div className="iconFooter" >
-    //                     <i className="fa fa-car"></i>
-    //                     <i className="fa fa-car"></i>
-    //                     <i className="fa fa-car"></i>
-    //                     <i className="fa fa-car"></i>
-    //                 </div>
-    //             </div>
-    //             <div className="col-4">
-    //                 <span className="p-0">@2020DuAnPhimProject</span>
-    //             </div>
-    //         </div>
-    //     </div>
-    // </div>
-    <footer className="new_footer_area bg_color bg-light">
+
+    <div className="new_footer_area bg_color text-center" style={{ backgroundColor: 'black' }}>
       <div className="new_footer_top">
         <div className="container">
           <div className="row">
-            <div className="col-lg-3 col-md-6">
+            <div className="col-lg-2 col-md-6">
               <div
                 className="f_widget company_widget wow fadeInLeft"
                 data-wow-delay="0.2s"
@@ -36,11 +17,14 @@ export default function Footer() {
                   animationName: "fadeInLeft",
                 }}
               >
-                <h3 className="f-title f_600 t_color f_size_18">
-                  Get in Touch
+                <h3 className="f-title f_600 t_color f_size_18 text-center">
+                  CyberSoft
                 </h3>
                 <p>
-                  Don’t miss any updates of our new templates and extensions.!
+                  FAQ
+                </p>
+                <p>
+                  Brand Guidelines
                 </p>
                 <form
                   action="#"
@@ -79,30 +63,25 @@ export default function Footer() {
                   animationName: "fadeInLeft",
                 }}
               >
-                <h3 className="f-title f_600 t_color f_size_18">Download</h3>
+                <h3 className="f-title f_600 t_color f_size_18 text-center">About</h3>
                 <ul className="list-unstyled f_list">
                   <li>
-                    <a href="#">Company</a>
+                    <a href="#">Thỏa thuận sử dụng</a>
                   </li>
                   <li>
-                    <a href="#">Android App</a>
+                    <a href="#">Quy chế hoạt động</a>
                   </li>
                   <li>
-                    <a href="#">ios App</a>
+                    <a href="#">Chính sách bảo mật</a>
                   </li>
                   <li>
-                    <a href="#">Desktop</a>
+                    <a href="#">Quyền lợi thành viên</a>
                   </li>
-                  <li>
-                    <a href="#">Projects</a>
-                  </li>
-                  <li>
-                    <a href="#">My tasks</a>
-                  </li>
+
                 </ul>
               </div>
             </div>
-            <div className="col-lg-3 col-md-6">
+            <div className="col-lg-4 col-md-6">
               <div
                 className="f_widget about-widget pl_70 wow fadeInLeft"
                 data-wow-delay="0.6s"
@@ -112,27 +91,10 @@ export default function Footer() {
                   animationName: "fadeInLeft",
                 }}
               >
-                <h3 className="f-title f_600 t_color f_size_18">Help</h3>
-                <ul className="list-unstyled f_list">
-                  <li>
-                    <a href="#">FAQ</a>
-                  </li>
-                  <li>
-                    <a href="#">Term &amp; conditions</a>
-                  </li>
-                  <li>
-                    <a href="#">Reporting</a>
-                  </li>
-                  <li>
-                    <a href="#">Documentation</a>
-                  </li>
-                  <li>
-                    <a href="#">Support Policy</a>
-                  </li>
-                  <li>
-                    <a href="#">Privacy</a>
-                  </li>
-                </ul>
+                <h3 className="f-title f_600 t_color f_size_18 text-center">Đối tác</h3>
+                <div>
+                  <img src="./img/LogoF.png" style={{ margin: "0 auto", width: '90%', height: "100%" }} />
+                </div>
               </div>
             </div>
             <div className="col-lg-3 col-md-6">
@@ -145,8 +107,8 @@ export default function Footer() {
                   animationName: "fadeInLeft",
                 }}
               >
-                <h3 className="f-title f_600 t_color f_size_18">
-                  Team Solutions
+                <h3 className="f-title f_600 t_color f_size_18 text-center">
+                  Social
                 </h3>
                 <div className="f_social_icon">
                   <a href="#" className="fab fa-facebook" />
@@ -180,6 +142,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-    </footer>
+    </div>
   );
 }

@@ -43,8 +43,13 @@ export default function Header() {
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="/hotro">
-              Hỗ trợ
+            <NavLink className="nav-link" to="/thongtincanhan">
+              Thông tin cá nhân
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/login">
+              Login
             </NavLink>
           </li>
         </ul>
