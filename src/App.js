@@ -18,6 +18,7 @@ import QuanLyNguoiDung from "./components/Admin/QuanLyNguoiDung";
 import ThemMoiNguoiDung from "./components/Admin/ThemMoiNguoiDung";
 import ThemPhim from "./components/Admin/ThemPhim";
 import QuanLyPhim from "./components/Admin/QuanLyPhim";
+import Login from "./components/Login/Login";
 
 function App() {
   return (
@@ -51,6 +52,10 @@ function App() {
         <AdminTemplate exact path="/admin/quanlyphim" Component={QuanLyPhim} />
         <AdminTemplate exact path="/admin/themphim" Component={ThemPhim} />
 
+
+
+        <Route exact path="/login" component={Login}></Route>
+        <Route exact path="/" component={TrangChu}></Route>
       </Switch>
     </BrowserRouter>
   );
