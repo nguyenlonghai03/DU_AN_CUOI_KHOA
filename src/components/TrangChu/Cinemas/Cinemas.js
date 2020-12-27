@@ -39,7 +39,7 @@ export default function Cinemas(props) {
             let active = index === 0 ? 'active' : '';
             return <div className={`tab-pane fade show ${active}`} id={heThongRap.maHeThongRap} role="tabpanel" aria-labelledby="v-pills-home-tab">
                 {heThongRap.lstCumRap.slice(0, 5).map((cumRap, index) => {
-                    return <div>
+                    return <div className="text-left m-3">
                         <a onClick={() => {
                             dispatch({
                                 type: 'LAY_PHIM_THEO_CUM',
@@ -62,9 +62,9 @@ export default function Cinemas(props) {
                 </div>
                 <div className="d-flex flex-column text-left px-4">
                     <p>{phim.tenPhim}</p>
-                    <p className="d-flex">{phim.lstLichChieuTheoPhim?.slice(0, 5).map((lichChieu, index) => {
-                        return <NavLink key={index} to={'/phongve/' + lichChieu.maLichChieu}>{moment(lichChieu?.ngayChieuGioChieu).format('h:mm a')}</NavLink>
-                    })}</p>
+                    <div className="d-flex row">{phim.lstLichChieuTheoPhim?.slice(0, 5).map((lichChieu, index) => {
+                        return <NavLink className="btn btn-outline-info m-2 " key={index} to={'/phongve/' + lichChieu.maLichChieu}>{moment(lichChieu?.ngayChieuGioChieu).format('h:mm a')}</NavLink>
+                    })}</div>
                 </div>
             </div>
         })
@@ -77,7 +77,7 @@ export default function Cinemas(props) {
 
     return (
         <>
-            <div style={{ fontSize: "15px" }} className="cinemas container-fluid bg-dark py-5">
+            <div style={{ fontSize: "15px", backgroundColor: 'black' }} className="cinemas container-fluid  py-5" >
                 <div className="container text-center ">
                     <div className="row bg-light text-dark py-5">
                         <div className="nav nav-pills flex-column col-md-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">

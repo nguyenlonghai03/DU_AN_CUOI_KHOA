@@ -12,6 +12,7 @@ const stateDefault = {
 
 
     danhSachNguoiDung: [],
+    danhSachPhimAdmin: []
 
 
 }
@@ -36,11 +37,16 @@ export const QuanLyPhimReducer = (state = stateDefault, action) => {
         //     // state.phimTheoCumRap = action.phimTheoHeThongRap[0].lstCumRap[0].danhSachPhim
         //     return { ...state }
         // }
-        case 'LAY_PHIM_THEO_MA_CUM_RAP': {
-            let item = state.phimTheoHeThongRap.find(item => item.maCumRap === action.maCumRap);
-            state.phimTheoCumRap = item?.danhSachPhim;
-            return { ...state }
-        }
+
+
+        // case 'LAY_PHIM_THEO_MA_CUM_RAP': {
+        //     let item = state.phimTheoHeThongRap.find(item => item.maCumRap === action.maCumRap);
+        //     state.phimTheoCumRap = item?.danhSachPhim;
+        //     return { ...state }
+        // }
+
+
+
         case 'THONG_TIN_PHONG_VE': {
             state.thongTinPhongVe = action.thongTinPhongVe
             return { ...state }
@@ -66,11 +72,6 @@ export const QuanLyPhimReducer = (state = stateDefault, action) => {
             state.chiTietPhim = action.chiTietPhim;
             return { ...state }
         }
-
-
-
-
-
         case 'LAY_TAT_CA': {
             state.layTatCa = action.layTatCa
             state.phimTheoHeThong = action.layTatCa[0].lstCumRap[0].danhSachPhim
@@ -106,6 +107,8 @@ export const QuanLyPhimReducer = (state = stateDefault, action) => {
 
 
 
+        // Phần này của admin
+
         case 'LAY_DANH_SACH_NGUOI_DUNG': {
             state.danhSachNguoiDung = action.danhSachNguoiDung;
             return { ...state }
@@ -116,6 +119,14 @@ export const QuanLyPhimReducer = (state = stateDefault, action) => {
             return { ...state }
 
         }
+
+        case 'LAY_DANH_SACH_PHIM_ADMIN': {
+            // console.log("ACC", action)
+            state.danhSachPhimAdmin = action.danhSachPhimAdmin;
+            return { ...state }
+        }
+
+
 
         case 'DAT_VE_THANH_CONG': {
             return { ...state, danhSachGheDangDat: [] }

@@ -312,26 +312,26 @@ export default function Carousel() {
             <div className="slider3d__item">
               <h4 className="slider3d__heading" data-text="SO HEADING"></h4>
 
-              <i className="playButton fab fa-google-play"></i>
+              {/* <i className="playButton fab fa-google-play"></i> */}
             </div>
             <div className="slider3d__item">
               <h4 className="slider3d__heading" data-text="MUCH ROTATION"></h4>
-              <i className="playButton fab fa-google-play"></i>
+              {/* <i className="playButton fab fa-google-play"></i> */}
             </div>
             <div className="slider3d__item" style={{ position: "relative" }}>
               <h4 className="slider3d__heading" data-text="VERY 3D"></h4>
-              <i className="playButton fab fa-google-play"></i>
+              {/* <i className="playButton fab fa-google-play"></i> */}
             </div>
             <div className="slider3d__item">
               <h4
                 className="slider3d__heading"
                 data-text="SUCH JAVASCRIPT"
               ></h4>
-              <i className="playButton fab fa-google-play"></i>
+              {/* <i className="playButton fab fa-google-play"></i> */}
             </div>
             <div className="slider3d__item">
               <h4 className="slider3d__heading" data-text="WOW WOW!"></h4>
-              <i className="playButton fab fa-google-play"></i>
+              {/* <i className="playButton fab fa-google-play"></i> */}
             </div>
           </div>
         </div>

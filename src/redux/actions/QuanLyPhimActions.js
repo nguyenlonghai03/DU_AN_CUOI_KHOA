@@ -166,6 +166,54 @@ export const layTatCaApi = async () => {
     }
 }
 
+
+
+
+
+// ============= ADMIN
+
+
+
+export const layDanhSachPhimAdminApi = async () => {
+    return async (dispatch) => {
+        try {
+            const { data, status } = await Axios({
+                url: 'https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP03',
+                method: 'GET'
+            })
+            if (status === 200) {
+                dispatch({
+                    type: 'LAY_DANH_SACH_PHIM_ADMIN',
+                    danhSachPhimAdmin: data
+                })
+            }
+        } catch (err) {
+            console.log(err)
+        }
+    }
+}
+
+
+export const ThemPhimUploadHinhApi = (formData) => {
+    console.log("Form", formData)
+    return dispatch => {
+        let promise = Axios({
+            url: 'https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/ThemPhimUploadHinh',
+            method: 'POST',
+            data: formData
+        })
+        console.log("PROMISE", promise)
+        promise.then(res => {
+            console.log("RES", res)
+            alert('Thêm thành công')
+        });
+        promise.catch(err => {
+            console.log(err.response.data);
+        })
+    }
+}
+
+
 // action datve
 export const datVeApiAction = async (thongTinVe) => {
 
