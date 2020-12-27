@@ -2,19 +2,19 @@ import React, {useState} from "react";
 import "./hideHeader";
 import * as $ from "jquery";
 import { NavLink } from "react-router-dom";
-import Modal from './Modal';
+import Modal2 from './Modal2';
 import DangKy from '../../../pages/TrangChu/DangKy'
 import DangNhap from '../../../pages/TrangChu/DangNhap'
 
 
-const DangKyWithModal = new Modal('Dang Ky', DangKy)
-const DangNhapWithModal = new Modal('Dang Ky', DangNhap)
+const DangKyWithModal = new Modal2('Dang Ky', DangKy)
+const DangNhapWithModal = new Modal2('Dang Ky', DangNhap)
 
 export default function Header() {
 
-  const [state, setState] = useState('DK');
+  const [stateee, setStateee] = useState('DK');
   const renderModal = () => {
-    if(state === 'DK') {
+    if(stateee === 'DK') {
       return DangKyWithModal;
     } else {
       return DangNhapWithModal;
@@ -76,11 +76,12 @@ export default function Header() {
           </button>
         </form> */}
 
-        <button className="btn btn-danger m-2" data-toggle="modal" data-target="#modelId" onClick={() => {
-                setState('DK')
+
+        <button className="btn btn-danger m-2" data-toggle="modal" data-target="#modelId2" onClick={() => {
+                setStateee('DK')
             }}>Dang ky</button>
-        <button className="btn btn-primary m-2" data-toggle="modal" data-target="#modelId" onClick={() => {
-                setState('DN')
+        <button className="btn btn-primary m-2" data-toggle="modal" data-target="#modelId2" onClick={() => {
+                setStateee('DN')
             }}>Dang nhap</button>
         {renderModal()}
       </div>
