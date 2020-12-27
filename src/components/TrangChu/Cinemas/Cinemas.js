@@ -63,7 +63,7 @@ export default function Cinemas(props) {
                 <div className="d-flex flex-column text-left px-4">
                     <p>{phim.tenPhim}</p>
                     <p className="d-flex">{phim.lstLichChieuTheoPhim?.slice(0, 5).map((lichChieu, index) => {
-                        return <span>{moment(lichChieu?.ngayChieuGioChieu).format('h:mm a')}</span>
+                        return <NavLink key={index} to={'/phongve/' + lichChieu.maLichChieu}>{moment(lichChieu?.ngayChieuGioChieu).format('h:mm a')}</NavLink>
                     })}</p>
                 </div>
             </div>
