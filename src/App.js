@@ -54,7 +54,7 @@ function App() {
 
 
 
-        <Route exact path="/login" component={Login}></Route>
+        {/* <Route exact path="/login" component={Login}></Route> */}
         <Route exact path="/" component={TrangChu}></Route>
       </Switch>
     </BrowserRouter>

@@ -47,11 +47,11 @@ export default function Header() {
               Thông tin cá nhân
             </NavLink>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <NavLink className="nav-link" to="/login">
               Login
             </NavLink>
-          </li>
+          </li> */}
         </ul>
 
         {/* <form className="form-inline my-2 my-lg-0">

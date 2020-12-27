@@ -92,7 +92,7 @@ export default function ChiTietPhim(props) {
                                         </p>
                                         <div className="row">
                                             {cumRap.lichChieuPhim?.slice(0, 12).map((lichChieu, index) => {
-                                                return <NavLink key={index} to={'/phongve/' + lichChieu.maLichChieu} className="col-2">
+                                                return <NavLink key={index} to={'/phongve/' + lichChieu.maLichChieu} className="m-2 btn btn-outline-info">
                                                     {moment(lichChieu.ngayChieuGioChieu).format('hh:mm a')}
 
                                                 </NavLink>
