@@ -1,7 +1,6 @@
 import $ from "jquery";
 
 (async function () {
-
   var rotatingSlider = await function (selector, options) {
     function initSingleSlider($el, options) {
       var $slider,
@@ -291,8 +290,6 @@ import $ from "jquery";
 
     globalInit();
   };
-
   window.rotatingSlider = rotatingSlider;
   rotatingSlider(".slider3d", { xRotation: false, globalDragRotation: true });
-
 })();

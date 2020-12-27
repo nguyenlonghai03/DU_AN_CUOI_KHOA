@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { dangNhapAction } from "../../redux/actions/QuanLyNguoiDungActions";
+import $ from "jquery";
+
 
 export default function DangNhap(props) {
   const dispatch = useDispatch();
@@ -17,20 +19,10 @@ export default function DangNhap(props) {
   const handleSubmit = (e) => {
     e.preventDefault(); //Chặn sự kiện reload browser
     dispatch(dangNhapAction(userLogin));
-
-    if (
-      userLogin.taiKhoan === "cybersoft" &&
-      userLogin.matKhau === "cybersoft"
-    ) {
-      //CHuyển về home
-      alert("Đăng nhập thành công !!!");
-      props.history.push("/");
-    }
   };
 
   return (
     <form className="container" onSubmit={handleSubmit}>
-      <h3 className="display-4">ĐĂNG NHẬP</h3>
       <div className="form-group">
         <p>Tài Khoản</p>
         <input
@@ -49,8 +41,8 @@ export default function DangNhap(props) {
         />
       </div>
 
-      <div className="form-group">
-        <button className="btn btn-success" type="submit">
+      <div className="form-group mt-4">
+        <button className="btn btn-success w-100" type="submit">
           Đăng Nhập
         </button>
       </div>

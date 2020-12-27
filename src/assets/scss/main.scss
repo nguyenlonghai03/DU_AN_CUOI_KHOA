@@ -5,7 +5,8 @@
 
 @import "./Helper/mixin";
 
-@import './components/modal';
+
+// @import './components/modal';
 @import '../../../node_modules/react-modal-video/scss/modal-video.scss';
 
 @import './Layouts/header';
@@ -15,7 +16,8 @@
 @import './pages/phongve';
 
 //import ở đây
-@import "./Layouts/carousel";
+@import './Layouts/carousel';
+
 @import './Layouts/videohome';
 @import './Layouts/movileList';
 @import './Layouts/footer';
