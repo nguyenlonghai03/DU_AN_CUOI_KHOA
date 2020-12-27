@@ -77,7 +77,7 @@ export default function Cinemas(props) {
 
     return (
         <>
-            <div style={{ fontSize: "15px" }} className="cinemas container-fluid bg-dark py-5">
+            <div style={{ fontSize: "15px", backgroundColor: 'black' }} className="cinemas container-fluid  py-5" >
                 <div className="container text-center ">
                     <div className="row bg-light text-dark py-5">
                         <div className="nav nav-pills flex-column col-md-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
