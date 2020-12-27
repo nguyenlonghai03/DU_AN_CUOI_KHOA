@@ -1,4 +1,6 @@
 import Axios from 'axios'
+import Swal from 'sweetalert2';
+import { ACCESSTOKEN } from '../../util/Config';
 
 export const layDanhSachPhimApiAction = () => {
     return dispatch => {
@@ -164,3 +166,30 @@ export const layTatCaApi = async () => {
     }
 }
 
+// action datve
+export const datVeApiAction = async (thongTinVe) => {
+
+    return async (dispatch) => {
+        try {
+
+            let { data, status } = await Axios({
+                url: `https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/DatVe`,
+                method: 'POST',
+                data: thongTinVe,
+                headers: { 'Authorization': 'Bearer ' + localStorage.getItem(ACCESSTOKEN) }
+            })
+
+            dispatch(await layThongTinPhongVe(thongTinVe.maLichChieu));
+            dispatch({ type: 'DAT_VE_THANH_CONG' });
+
+            Swal.fire('Thông báo', 'Đặt vé thành công', 'success');
+
+
+        } catch (err) {
+            console.log('adfasd', err.response.data);
+            Swal.fire('Thông báo', 'Đặt vé thất bại', 'error');
+
+        }
+
+    }
+}

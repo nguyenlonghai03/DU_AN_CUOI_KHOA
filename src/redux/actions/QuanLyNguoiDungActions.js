@@ -1,9 +1,9 @@
 import axios from "axios";
-import { ACCESSTOKEN, DOMAIN, USER_LOGIN } from "../../util/Confit";
+import { ACCESSTOKEN, DOMAIN, USER_LOGIN } from "../../util/Config";
 import swal from "sweetalert2";
 import { history } from "../../util/history";
 import Axios from "axios";
-
+import $ from "jquery";
 
 export const dangNhapAction = (userLogin) => {
   return (dispatch) => {
@@ -14,20 +14,26 @@ export const dangNhapAction = (userLogin) => {
     });
     promise
       .then((result) => {
+
+
         // Đăng nhập thành công lưu tt người dung vào localstorage
         localStorage.setItem(USER_LOGIN, JSON.stringify(result.data));
         //   Lưu token vào local  storage
         localStorage.setItem(ACCESSTOKEN, result.data.accessToken);
         swal.fire("Thông báo", "Đẵ đăng nhập thành công", "success");
+
         // Dispatch gia tri len  reducer
         dispatch({
           type: "DANG_NHAP",
           userLogin: result.data,
         });
-        history.push("/trangchu");
+        history.push("/");
+
+
+
       })
       .catch((error) => {
-        swal.fire("Thông báo", error.response.data, "success");
+        swal.fire("Sai tên đăng nhập hoặc mật khẩu", '', "error");
       });
   };
 };

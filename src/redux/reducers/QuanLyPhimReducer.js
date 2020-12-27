@@ -117,7 +117,9 @@ export const QuanLyPhimReducer = (state = stateDefault, action) => {
 
         }
 
-
+        case 'DAT_VE_THANH_CONG': {
+            return { ...state, danhSachGheDangDat: [] }
+        }
 
 
         default: return { ...state }
