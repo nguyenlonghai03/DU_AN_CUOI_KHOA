@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { layThongTinPhongVe } from '../../redux/actions/QuanLyPhimActions';
+import { datVeApiAction, layThongTinPhongVe } from '../../redux/actions/QuanLyPhimActions';
+import { USER_LOGIN } from '../../util/Config';
 
 
 export default function PhongVe(props) {
@@ -19,7 +20,6 @@ export default function PhongVe(props) {
 
     }, []);
 
-    console.log('thongTinPhongVe', thongTinPhongVe);
 
 
     return (
@@ -76,6 +76,30 @@ export default function PhongVe(props) {
                             {ghe.stt},
                         </span>
                     })}</div>
+
+                    <hr />
+                    <button className="btn btn-success w-100" style={{ fontSize: "30px" }}
+                        onClick={async () => {
+
+                            if (localStorage.getItem(USER_LOGIN)) {
+
+                                let usLogin = JSON.parse(localStorage.getItem(USER_LOGIN));
+
+                                let objDatVe = {
+                                    "maLichChieu": props.match.params.maLichChieu,
+                                    "danhSachVe": danhSachGheDangDat,
+                                    "taiKhoanNguoiDung": usLogin.taiKhoan
+                                }
+
+                                dispatch(await datVeApiAction(objDatVe));
+
+
+                            } else {
+                                props.history.push('/');
+                            }
+
+                        }}>Đặt Vé</button>
+
                 </div>
             </div>
         </div >
