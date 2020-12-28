@@ -19,6 +19,7 @@ import ThemMoiNguoiDung from "./components/Admin/ThemMoiNguoiDung";
 import ThemPhim from "./components/Admin/ThemPhim";
 import QuanLyPhim from "./components/Admin/QuanLyPhim";
 import Login from "./components/Login/Login";
+import Demo from "./components/Admin/Demo";
 
 function App() {
   return (
@@ -52,6 +53,9 @@ function App() {
         <AdminTemplate exact path="/admin/quanlyphim" Component={QuanLyPhim} />
         <AdminTemplate exact path="/admin/themphim" Component={ThemPhim} />
 
+
+        <Route exact path="/admin" component={DangNhap}></Route>
+        <Route exact path="/demo" component={Demo}></Route>
 
 
         {/* <Route exact path="/login" component={Login}></Route> */}

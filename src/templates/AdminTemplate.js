@@ -4,8 +4,12 @@ import $ from 'jquery'
 import '../components/Admin/css/style.css';
 import { NavLink, Route } from 'react-router-dom'
 import QuanLyNguoiDung from '../components/Admin/QuanLyNguoiDung';
+import { useSelector } from 'react-redux';
 
 export default function AdminTemplate(props) {
+
+    const userLogin = useSelector(state => state.QuanLyNguoiDungReducer);
+
 
     let { Component, ...restParam } = props;
     const themeCookieName = 'theme'
@@ -27,9 +31,7 @@ export default function AdminTemplate(props) {
         }
         return ""
     }
-
     loadTheme()
-
     function loadTheme() {
         var theme = getCookie(themeCookieName)
         body.classList.add(theme === "" ? themeLight : theme)
@@ -45,6 +47,8 @@ export default function AdminTemplate(props) {
                                 <img src="../img/AT-pro-white.png" alt="ATPro logo" className="logo logo-dark" />
                             </li>
                         </ul>
+
+
                         <ul className="navbar-nav nav-right">
                             <li className="nav-item dropdown">
                                 <a className="nav-link">
@@ -53,10 +57,11 @@ export default function AdminTemplate(props) {
                             </li>
                             <li className="nav-item avt-wrapper">
                                 <div className="avt dropdown">
-                                    <img src="../img/tuat.jpg" alt="User image" className="dropdown-toggle" data-toggle="user-menu" />
+                                    {userLogin.taiKhoan ? <img src="../img/tuat.jpg" alt="User image" className="dropdown-toggle" data-toggle="user-menu" /> : <button className="btn btn-success">Đăng nhập</button>}
                                 </div>
                             </li>
                         </ul>
+
                     </div>
                     <div className="sidebar">
                         <ul className="sidebar-nav">
