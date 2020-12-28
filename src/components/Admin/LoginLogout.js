@@ -3,7 +3,7 @@ import $ from 'jquery'
 import DangNhap from './DangNhap';
 import DangKy from './DangKy';
 
-export default function Demo() {
+export default function LoginLogout() {
     useEffect(() => {
         (function () {
             const sign_in_btnF = document.querySelector("#sign-in-btnF");

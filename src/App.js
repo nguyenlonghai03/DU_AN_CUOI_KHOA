@@ -18,8 +18,7 @@ import QuanLyNguoiDung from "./components/Admin/QuanLyNguoiDung";
 import ThemMoiNguoiDung from "./components/Admin/ThemMoiNguoiDung";
 import ThemPhim from "./components/Admin/ThemPhim";
 import QuanLyPhim from "./components/Admin/QuanLyPhim";
-import Login from "./components/Login/Login";
-import Demo from "./components/Admin/Demo";
+import LoginLogout from "./components/Admin/LoginLogout";
 
 function App() {
   return (
@@ -54,8 +53,8 @@ function App() {
         <AdminTemplate exact path="/admin/themphim" Component={ThemPhim} />
 
 
-        <Route exact path="/admin" component={DangNhap}></Route>
-        <Route exact path="/demo" component={Demo}></Route>
+        <Route exact path="/admin" component={LoginLogout}></Route>
+        <Route exact path="/loginlogout" component={LoginLogout}></Route>
 
 
         {/* <Route exact path="/login" component={Login}></Route> */}
