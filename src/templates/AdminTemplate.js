@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import $ from 'jquery'
 // import '../components/Admin/css/all.css';
 import '../components/Admin/css/style.css';
@@ -8,40 +8,76 @@ import { useSelector } from 'react-redux';
 
 export default function AdminTemplate(props) {
 
+
     const userLogin = useSelector(state => state.QuanLyNguoiDungReducer);
 
 
     let { Component, ...restParam } = props;
-    const themeCookieName = 'theme'
-    const themeDark = 'dark'
-    const themeLight = 'light'
-    const body = document.getElementsByTagName('body')[0]
 
-    function getCookie(cname) {
-        var name = cname + "="
-        var ca = document.cookie.split(';')
-        for (var i = 0; i < ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0) == ' ') {
-                c = c.substring(1)
+
+    useEffect(() => {
+        (function () {
+            const themeCookieName = 'theme'
+            const themeDark = 'dark'
+            const themeLight = 'light'
+            const barAdmin = document.querySelector('#barAdmin')
+            // const body = document.getElementsByTagName('body')[0]
+
+            const body = document.querySelector('.overlay-scrollbar');
+            // console.log("kai", kai)
+            // console.log("body", body)
+            const classBody = body.classList;
+            // console.log("classBOdy", classBody.value)
+
+            function getCookie(cname) {
+                var name = cname + "="
+                var ca = document.cookie.split(';')
+                for (var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                        c = c.substring(1)
+                    }
+                    if (c.indexOf(name) == 0) {
+                        return c.substring(name.length, c.length)
+                    }
+                }
+                return ""
             }
-            if (c.indexOf(name) == 0) {
-                return c.substring(name.length, c.length)
+            loadTheme()
+            function loadTheme() {
+                var theme = getCookie(themeCookieName)
+                body.classList.add(theme === "" ? themeLight : theme)
             }
-        }
-        return ""
-    }
-    loadTheme()
-    function loadTheme() {
-        var theme = getCookie(themeCookieName)
-        body.classList.add(theme === "" ? themeLight : theme)
-    }
+
+            barAdmin.addEventListener('click', () => {
+                // body.classList == "overlay-scrollbar" ?   
+                // console.log("classBody", classBody.value)
+                if (classBody.value === "overlay-scrollbar light") {
+                    // alert('Co')
+                    body.classList.add("sidebar-expand")
+                } else {
+                    body.classList.remove("sidebar-expand")
+                }
+            })
+
+        })()
+    }, [])
+
+
+
+
     return (
         <Route {...restParam} render={(propsRoute) => {
             return <>
                 <div className="overlay-scrollbar">
                     <div className="navbar ">
                         <ul className="navbar-nav">
+                            <li className="nav-item">
+                                <a className=" nav-link " id="barAdmin">
+                                    <i className="fas fa-bars" />
+                                </a>
+                            </li>
+
                             <li className="nav-item">
                                 <img src="../img/AT-pro-black.png" alt="ATPro logo" className="logo logo-light" />
                                 <img src="../img/AT-pro-white.png" alt="ATPro logo" className="logo logo-dark" />
@@ -121,6 +157,7 @@ export default function AdminTemplate(props) {
                             </div>
                         </div>
                     </div>
+
                 </div>
             </>
         }} />
@@ -128,3 +165,6 @@ export default function AdminTemplate(props) {
     )
 
 }
+
+
+

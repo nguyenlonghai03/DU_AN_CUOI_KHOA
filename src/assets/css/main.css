@@ -1501,7 +1501,7 @@ input {
   z-index: 5;
 }
 
-form {
+.signin-signupF form {
   display: flex;
   align-items: center;
   justify-content: center;
