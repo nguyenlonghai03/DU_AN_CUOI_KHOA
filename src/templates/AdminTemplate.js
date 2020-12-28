@@ -1,39 +1,71 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import $ from 'jquery'
 // import '../components/Admin/css/all.css';
 import '../components/Admin/css/style.css';
 import { NavLink, Route } from 'react-router-dom'
 import QuanLyNguoiDung from '../components/Admin/QuanLyNguoiDung';
+import { useSelector } from 'react-redux';
 
 export default function AdminTemplate(props) {
 
+
+    const userLogin = useSelector(state => state.QuanLyNguoiDungReducer);
+
+
     let { Component, ...restParam } = props;
-    const themeCookieName = 'theme'
-    const themeDark = 'dark'
-    const themeLight = 'light'
-    const body = document.getElementsByTagName('body')[0]
 
-    function getCookie(cname) {
-        var name = cname + "="
-        var ca = document.cookie.split(';')
-        for (var i = 0; i < ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0) == ' ') {
-                c = c.substring(1)
+
+    useEffect(() => {
+        (function () {
+            const themeCookieName = 'theme'
+            const themeDark = 'dark'
+            const themeLight = 'light'
+            const barAdmin = document.querySelector('#barAdmin')
+            // const body = document.getElementsByTagName('body')[0]
+
+            const body = document.querySelector('.overlay-scrollbar');
+            // console.log("kai", kai)
+            // console.log("body", body)
+            const classBody = body.classList;
+            // console.log("classBOdy", classBody.value)
+
+            function getCookie(cname) {
+                var name = cname + "="
+                var ca = document.cookie.split(';')
+                for (var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                        c = c.substring(1)
+                    }
+                    if (c.indexOf(name) == 0) {
+                        return c.substring(name.length, c.length)
+                    }
+                }
+                return ""
             }
-            if (c.indexOf(name) == 0) {
-                return c.substring(name.length, c.length)
+            loadTheme()
+            function loadTheme() {
+                var theme = getCookie(themeCookieName)
+                body.classList.add(theme === "" ? themeLight : theme)
             }
-        }
-        return ""
-    }
 
-    loadTheme()
+            barAdmin.addEventListener('click', () => {
+                // body.classList == "overlay-scrollbar" ?   
+                // console.log("classBody", classBody.value)
+                if (classBody.value === "overlay-scrollbar light") {
+                    // alert('Co')
+                    body.classList.add("sidebar-expand")
+                } else {
+                    body.classList.remove("sidebar-expand")
+                }
+            })
 
-    function loadTheme() {
-        var theme = getCookie(themeCookieName)
-        body.classList.add(theme === "" ? themeLight : theme)
-    }
+        })()
+    }, [])
+
+
+
+
     return (
         <Route {...restParam} render={(propsRoute) => {
             return <>
@@ -41,10 +73,18 @@ export default function AdminTemplate(props) {
                     <div className="navbar ">
                         <ul className="navbar-nav">
                             <li className="nav-item">
+                                <a className=" nav-link " id="barAdmin">
+                                    <i className="fas fa-bars" />
+                                </a>
+                            </li>
+
+                            <li className="nav-item">
                                 <img src="../img/AT-pro-black.png" alt="ATPro logo" className="logo logo-light" />
                                 <img src="../img/AT-pro-white.png" alt="ATPro logo" className="logo logo-dark" />
                             </li>
                         </ul>
+
+
                         <ul className="navbar-nav nav-right">
                             <li className="nav-item dropdown">
                                 <a className="nav-link">
@@ -53,10 +93,11 @@ export default function AdminTemplate(props) {
                             </li>
                             <li className="nav-item avt-wrapper">
                                 <div className="avt dropdown">
-                                    <img src="../img/tuat.jpg" alt="User image" className="dropdown-toggle" data-toggle="user-menu" />
+                                    {userLogin.taiKhoan ? <img src="../img/tuat.jpg" alt="User image" className="dropdown-toggle" data-toggle="user-menu" /> : <button className="btn btn-success">Đăng nhập</button>}
                                 </div>
                             </li>
                         </ul>
+
                     </div>
                     <div className="sidebar">
                         <ul className="sidebar-nav">
@@ -116,6 +157,7 @@ export default function AdminTemplate(props) {
                             </div>
                         </div>
                     </div>
+
                 </div>
             </>
         }} />
@@ -123,3 +165,6 @@ export default function AdminTemplate(props) {
     )
 
 }
+
+
+
