@@ -14,8 +14,7 @@ export const dangNhapAction = (userLogin) => {
     });
     promise
       .then((result) => {
-
-
+        // console.log("RES", result)
         // Đăng nhập thành công lưu tt người dung vào localstorage
         localStorage.setItem(USER_LOGIN, JSON.stringify(result.data));
         //   Lưu token vào local  storage
@@ -27,7 +26,9 @@ export const dangNhapAction = (userLogin) => {
           type: "DANG_NHAP",
           userLogin: result.data,
         });
-        history.push("/");
+        // history.push("/");
+        // Đăng nhập thành công quay lại trang trước đó
+        history.goBack();
 
 
 
@@ -74,7 +75,7 @@ export const timKiemNguoiDung = async (tuKhoa) => {
         method: 'GET'
       })
       if (status === 200) {
-        console.log("data", data)
+        // console.log("data", data)
         dispatch({
           type: 'TIM_KIEM_NGUOI_DUNG',
           timKiem: data
@@ -83,5 +84,27 @@ export const timKiemNguoiDung = async (tuKhoa) => {
     } catch (err) {
       console.log(err);
     }
+  }
+}
+
+
+
+// Đăng ký 
+export const dangKyApi = (objDk) => {
+  // console.log("obj", objDk)
+  return (dispatch) => {
+
+    const promise = Axios({
+      url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangKy`,
+      method: 'POST',
+      data: objDk
+    })
+    promise.then(res => {
+      // console.log("res", res.data)
+      swal.fire('Đăng ký thành công!')
+    })
+    promise.catch(err => {
+      swal.fire(err.response.data)
+    })
   }
 }
