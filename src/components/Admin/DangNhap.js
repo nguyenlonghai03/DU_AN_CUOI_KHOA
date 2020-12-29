@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { dangNhapAction } from '../../redux/actions/QuanLyNguoiDungActions'
 // import { dangNhapAction } from '../redux/actions/QuanLyNguoiDungAction'
 
 
@@ -12,8 +13,6 @@ export default function DangNhap(props) {
     // console.log(userLogin)
     const handleChange = (e) => {
         let { value, name } = e.target;
-
-
         setUserLogin({ ...userLogin, [name]: value })
 
     }
@@ -26,22 +25,23 @@ export default function DangNhap(props) {
 
         // }
         // 
-        // dispatch(dangNhapAction(userLogin));
+        // console.log("USE", userLogin)
+        dispatch(dangNhapAction(userLogin));
         // console.log(dangNhapAction)
 
     }
 
 
     return (
-        <form action="#" className="sign-in-formF">
+        <form action="#" className="sign-in-formF" onSubmit={handleSubmit}>
             <h2 className="titleF">Sign in</h2>
             <div className="input-fieldF">
                 <i className="fas fa-user" />
-                <input type="text" placeholder="Username" />
+                <input name="taiKhoan" type="text" placeholder="Username" onChange={handleChange} />
             </div>
             <div className="input-fieldF">
                 <i className="fas fa-lock" />
-                <input type="password" placeholder="Password" />
+                <input name="matKhau" type="password" placeholder="Password" onChange={handleChange} />
             </div>
             <input type="submit" value="Login" className="btnF solid" />
             <p className="social-textF">Or Sign in with social platforms</p>
