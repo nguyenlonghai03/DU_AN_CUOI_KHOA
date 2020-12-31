@@ -3,9 +3,9 @@ import { Redirect } from 'react-router-dom'
 import { USER_LOGIN } from '../../util/Config'
 export default function ThongTinCaNhan(props) {
 
+
     if (localStorage.getItem(USER_LOGIN)) {
         return (
-
             <Fragment>
                 <div className="container" data-spy="scroll" >
                     <main >

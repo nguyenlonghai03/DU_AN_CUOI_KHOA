@@ -153,14 +153,14 @@ export default function AdminTemplate(props) {
                                             </NavLink>
                                         </li>
 
-                                        <li className="sidebar-nav-item">
+                                        {/* <li className="sidebar-nav-item">
                                             <a href="#" className="sidebar-nav-link">
                                                 <div>
                                                     <i className="fas fa-audio-description" />
                                                 </div>
                                                 <span>Pellentesque</span>
                                             </a>
-                                        </li>
+                                        </li> */}
                                     </ul>
                                 </div>
                                 <div className="wrapper">
