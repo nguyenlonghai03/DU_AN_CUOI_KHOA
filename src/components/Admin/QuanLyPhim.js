@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { layDanhSachPhimAdminApi, suaPhim } from '../../redux/actions/QuanLyPhimActions'
+import { layDanhSachPhimAdminApi, suaPhim, taoLichChieuApi, xoaPhimApi, xoaPhimApiAdmin } from '../../redux/actions/QuanLyPhimActions'
 import Modal from './Modal'
 import ModalCapNhatPhim from './ModalCapNhatPhim'
 
@@ -40,6 +40,7 @@ export default function QuanLyPhim() {
                 </thead>
                 <tbody>
                     {danhSachPhimAdmin.map((phim, index) => {
+                        {/* console.log("PHIM", phim) */ }
                         return (
 
                             <tr>
@@ -54,11 +55,13 @@ export default function QuanLyPhim() {
                                 <td>{phim.maNhom}</td>
                                 <td>{phim.ngayKhoiChieu}</td>
                                 <td>
-                                    <button className="btn btn-success m-1" data-toggle="modal" data-target="#modelId">Tạo lịch chiếu</button>
+                                    <button className="btn btn-success m-1" data-toggle="modal" data-target="#modelId" >Tạo lịch chiếu</button>
                                     <button className="btn btn-success m-1" data-toggle="modal" data-target="#modelIdCapNhat" onClick={async () => {
                                         dispatch(await suaPhim(phim))
                                     }}>Sửa</button>
-                                    <button className="btn btn-danger m-1">Xóa</button>
+                                    <button className="btn btn-danger m-1" onClick={async () => {
+                                        dispatch(await xoaPhimApi(phim.maPhim))
+                                    }}>Xóa</button>
                                 </td>
                             </tr>
                         )
