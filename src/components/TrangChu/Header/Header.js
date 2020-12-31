@@ -50,8 +50,8 @@ export default function Header() {
 					<div className="collapse navbar-collapse" id="collapsibleNavId">
 						<ul className="navbar-nav mx-auto mt-2 mt-lg-0">
 							<li className="nav-item active">
-								<NavLink className="nav-link" to="/lichchieu">
-									Lịch chiếu <span className="sr-only">(current)</span>
+								<NavLink className="nav-link" to="/">
+									Trang Chủ
 								</NavLink>
 							</li>
 							<li className="nav-item">
@@ -69,11 +69,11 @@ export default function Header() {
 									Thông tin cá nhân
 							</NavLink>
 							</li>
-							<li className="nav-item">
-								<NavLink className="nav-link" to="/login">
+							{/* <li className="nav-item">
+								<NavLink className="nav-link" to="/loginlogout">
 									Login
 							</NavLink>
-							</li>
+							</li> */}
 						</ul>
 
 						{/* <form className="form-inline my-2 my-lg-0">
@@ -87,14 +87,16 @@ export default function Header() {
         </form> */}
 					</div>
 					<div class="btn__group">
-						{userLogin.taiKhoan ? <button className="btn btn-primary m-2 btn__login"><i class="fa fa-user-circle" aria-hidden="true"></i> {userLogin.taiKhoan}</button> :
-							<button className="btn btn-primary m-2 btn__login" data-toggle="modal" data-target="#modelId2" onClick={() => {
-								setStateee('DN')
-							}}>Đăng nhập</button>
+						{userLogin.taiKhoan ? <button className="btn btn-primary m-2 btn__login"><i class="fa fa-user-circle" aria-hidden="true"></i> Hello {userLogin.taiKhoan}!</button> :
+							<NavLink className="btn btn-primary m-2 btn__login" to="/loginlogout">Đăng nhập</NavLink>
 						}
-						<button className="btn btn-danger mr-2 btn__register" data-toggle="modal" data-target="#modelId2" onClick={() => {
+						{/* <button className="btn btn-danger mr-2 btn__register" data-toggle="modal" data-target="#modelId2" onClick={() => {
 							setStateee('DK')
-						}}>Đăng ký</button>
+						}}>Đăng ký</button> */}
+
+						{/* <NavLink className="nav-link" to="/loginlogout">
+									<button className="btn btn-primary m-2 btn__login"><i class="fa fa-user-circle" aria-hidden="true"></i></button>
+							</NavLink> */}
 					</div>
 				</div>
 			</nav>
