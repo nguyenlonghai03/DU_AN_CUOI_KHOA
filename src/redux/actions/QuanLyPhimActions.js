@@ -278,3 +278,73 @@ export const suaPhim = (objNewPhim) => {
         })
     }
 }
+
+// export const xoaPhimApiAdmin = (maPhim) => {
+//     return async (dispatch) => {
+//         try {
+//             const { data, status } = await Axios({
+//                 url: `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`,
+//                 method: 'DELETE',
+//                 headers: { 'Authorization': 'Bearer ' + localStorage.getItem(ACCESSTOKEN) }
+//             })
+//             if (status === 200) {
+//                 Swal.fire('Thông báo', 'Xóa thành công', 'success');
+//                 // console.log("ĐAA", data)
+//             }
+
+//         } catch (err) {
+//             // Swal.fire('Thông báo', 'Xóa thất bại', 'error')
+//             console.log(err)
+//         }
+//     }
+// }
+
+
+
+
+
+export const xoaPhimApi = (maPhim) => {
+    // console.log("taiKhoan", maPhim)
+    return async (dispatch) => {
+        try {
+            const { data, status } = await Axios({
+                url: `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`,
+                method: 'DELETE',
+                headers: { 'Authorization': 'Bearer ' + localStorage.getItem(ACCESSTOKEN) }
+            })
+            if (status === 200) {
+                Swal.fire("Thông báo", "Xóa thành công", 'success');
+                dispatch(await layDanhSachPhimAdminApi())
+            }
+
+        } catch (err) {
+            // swal.fire('Thông báo', 'Xóa thất bại', 'error')
+            Swal.fire("Thông báo", 'Xóa thất bại', "error")
+        }
+    }
+}
+
+
+export const taoLichChieuApi = (objTaoLichChieu) => {
+    console.log("OBJ", objTaoLichChieu)
+    return async dispatch => {
+        try {
+            const { data, status } = await Axios({
+                url: `https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/TaoLichChieu`,
+                method: 'POST',
+                data: objTaoLichChieu,
+                headers: { 'Authorization': 'Bearer ' + localStorage.getItem(ACCESSTOKEN) }
+            })
+            if (status === 200) {
+                Swal.fire('Thông báo', 'Tạo thành công', 'success');
+
+                console.log("DAAA", data)
+            }
+
+        } catch (err) {
+
+            console.log("Tao", err.response.data)
+            Swal.fire('Thông báo', 'Tạo thất bại', 'error')
+        }
+    }
+}
