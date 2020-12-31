@@ -108,3 +108,84 @@ export const dangKyApi = (objDk) => {
     })
   }
 }
+
+
+
+// Thêm người dùng
+export const themNguoiDungApi = (objThem) => {
+  return async (dispatch) => {
+    try {
+      const { data, status } = await Axios({
+        url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThemNguoiDung`,
+        method: 'POST',
+        data: objThem,
+        headers: { 'Authorization': 'Bearer ' + localStorage.getItem(ACCESSTOKEN) }
+      })
+      if (status === 200) {
+        // console.log("data", data)
+        swal.fire('Thông báo', 'Thêm thành công', 'success')
+
+      }
+
+
+
+    } catch (err) {
+      swal.fire('Thông báo', 'Thêm thất bại', 'error')
+    }
+  }
+}
+
+
+export const xoaNguoiDungApi = (taiKhoan) => {
+  console.log("taiKhoan", taiKhoan)
+  return async (dispatch) => {
+    try {
+      const { data, status } = await Axios({
+        url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`,
+        method: 'DELETE',
+        headers: { 'Authorization': 'Bearer ' + localStorage.getItem(ACCESSTOKEN) }
+      })
+      if (status === 200) {
+        swal.fire("Thông báo", "Xóa thành công", 'success')
+        dispatch(await layDanhSachNguoiDung())
+      }
+
+    } catch (err) {
+      // swal.fire('Thông báo', 'Xóa thất bại', 'error')
+      swal.fire("Thông báo", 'Xóa thất bại', "error")
+    }
+  }
+}
+
+
+export const capNhatNguoiDungApi = (obj) => {
+  // console.log("OBBBB", obj)
+  return async (dispatch) => {
+    try {
+      const { data, status } = await Axios({
+        url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
+        method: 'PUT',
+        data: obj,
+        headers: { "Authorization": 'Bearer ' + localStorage.getItem(ACCESSTOKEN) }
+      })
+      if (status === 200) {
+        swal.fire("Thông báo", 'Cập nhật thành công', 'success');
+        console.log("DATA", data)
+        dispatch(await layDanhSachNguoiDung())
+      }
+    } catch (err) {
+      swal.fire("Thông báo", 'Cập nhật thất bại', "error")
+      console.log(err)
+    }
+  }
+}
+
+
+export const suaNguoiDung = (nguoiDung) => {
+  return async (dispatch) => {
+    await dispatch({
+      type: 'SUA_NGUOI_DUNG',
+      nguoiDungCapNhat: nguoiDung
+    })
+  }
+}

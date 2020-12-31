@@ -20,6 +20,7 @@ import ThemPhim from "./components/Admin/ThemPhim";
 import QuanLyPhim from "./components/Admin/QuanLyPhim";
 import LoginLogout from "./components/Admin/LoginLogout";
 
+
 function App() {
   return (
     <BrowserRouter>
@@ -47,13 +48,20 @@ function App() {
         <UserTemplate exact path="/dangky" Component={DangKy}></UserTemplate>
 
         {/* <Route></Route> */}
+        <AdminTemplate exact path="/admin" Component={QuanLyNguoiDung} />
         <AdminTemplate exact path="/admin/quanlynguoidung" Component={QuanLyNguoiDung} />
         <AdminTemplate exact path="/admin/themnguoidung" Component={ThemMoiNguoiDung} />
         <AdminTemplate exact path="/admin/quanlyphim" Component={QuanLyPhim} />
         <AdminTemplate exact path="/admin/themphim" Component={ThemPhim} />
 
 
+
+
+        {/* {maLoaiNguoiDung === 'QuanTri' ? <AdminTemplate exact path="/admin" Component={QuanLyNguoiDung}></AdminTemplate> : <Route exact path="/admin" component={LoginLogout}></Route>} */}
+
+
         <Route exact path="/admin" component={LoginLogout}></Route>
+        <AdminTemplate exact path="/admin" Component={QuanLyNguoiDung}></AdminTemplate>
         <Route exact path="/loginlogout" component={LoginLogout}></Route>
 
 
