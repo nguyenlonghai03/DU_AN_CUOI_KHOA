@@ -31,7 +31,7 @@ export default function DangKy() {
         e.preventDefault();
 
         var objLogout = state;
-        console.log("obj", objLogout)
+        // console.log("obj", objLogout)
 
         dispatch(dangKyApi(objLogout))
     }

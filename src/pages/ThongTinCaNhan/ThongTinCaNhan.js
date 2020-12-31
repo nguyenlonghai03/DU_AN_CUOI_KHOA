@@ -1,10 +1,9 @@
 import React, { Fragment, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
+import { USER_LOGIN } from '../../util/Config'
 export default function ThongTinCaNhan(props) {
 
-    if (localStorage.getItem('userLogin')) {
-
-
+    if (localStorage.getItem(USER_LOGIN)) {
         return (
 
             <Fragment>

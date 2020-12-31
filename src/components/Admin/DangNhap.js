@@ -3,8 +3,10 @@ import { useDispatch } from 'react-redux'
 import { dangNhapAction } from '../../redux/actions/QuanLyNguoiDungActions'
 // import { dangNhapAction } from '../redux/actions/QuanLyNguoiDungAction'
 
+// import { history } from '../../util/history'
 
 export default function DangNhap(props) {
+    // console.log("HIS", history)
     const dispatch = useDispatch()
 
     // console.log('props trang login', props); // props của route

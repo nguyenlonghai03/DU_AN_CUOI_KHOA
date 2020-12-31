@@ -1,12 +1,21 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { layDanhSachNguoiDung, timKiemNguoiDung } from '../../redux/actions/QuanLyNguoiDungActions';
+import { layDanhSachNguoiDung, suaNguoiDung, timKiemNguoiDung, xoaNguoiDungApi } from '../../redux/actions/QuanLyNguoiDungActions';
 import { NavLink } from 'react-router-dom'
+import ModalCapNhatNguoiDung from './ModalCapNhatNguoiDung';
+
+
+
+const handleModalCapNhat = () => new ModalCapNhatNguoiDung();
 export default function QuanLyNguoiDung() {
 
 
     const { danhSachNguoiDung } = useSelector(state => state.QuanLyPhimReducer)
     const dispatch = useDispatch();
+
+    const renderModalCapNhat = () => {
+        return handleModalCapNhat()
+    }
 
     useEffect(async () => {
         dispatch(await layDanhSachNguoiDung())
@@ -18,6 +27,7 @@ export default function QuanLyNguoiDung() {
         console.log("VALUE", valueInputTag)
         return valueInputTag;
     }
+
 
 
 
@@ -66,13 +76,22 @@ export default function QuanLyNguoiDung() {
                             <td>{nguoiDung.soDt}</td>
                             <td>{nguoiDung.maLoaiNguoiDung}</td>
                             <td>
-                                <button className="btn btn-success">Sửa</button>
-                                <button className="btn btn-danger">Xóa</button>
+                                <button className="btn btn-success" data-toggle="modal" data-target="#modelId" onClick={() => {
+                                    dispatch(suaNguoiDung(nguoiDung))
+                                }}>Sửa</button>
+                                <button className="btn btn-danger" onClick={() => {
+                                    dispatch(xoaNguoiDungApi(nguoiDung.taiKhoan))
+                                }}>Xóa</button>
                             </td>
                         </tr>
                     </tbody>
                 })}
+
             </table>
+            {renderModalCapNhat()}
         </>
     )
 }
+
+
+

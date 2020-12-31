@@ -12,7 +12,19 @@ const stateDefault = {
 
 
     danhSachNguoiDung: [],
-    danhSachPhimAdmin: []
+    danhSachPhimAdmin: [],
+    stateFormFilm: {
+        values: {
+            maPhim: 0,
+            tenPhim: '',
+            trailer: '',
+            danhGia: 0,
+            moTa: '',
+            hinhAnh: {},
+            maNhom: 'GP03',
+            ngayKhoiChieu: ''
+        }
+    }
 
 
 }
@@ -130,6 +142,36 @@ export const QuanLyPhimReducer = (state = stateDefault, action) => {
 
         case 'DAT_VE_THANH_CONG': {
             return { ...state, danhSachGheDangDat: [] }
+        }
+
+
+
+        // =====
+
+        case 'SUA_PHIM': {
+            // console.log("AA", action)
+            let phimCapNhat = action.phimChinhSua;
+            state.stateFormFilm.values = {
+                ...state.stateFormFilm.values,
+                maPhim: phimCapNhat.maPhim,
+                tenPhim: phimCapNhat.tenPhim,
+                trailer: phimCapNhat.trailer,
+                danhGia: phimCapNhat.danhGia,
+                moTa: phimCapNhat.moTa,
+                hinhAnh: phimCapNhat.hinhAnh,
+                ngayKhoiChieu: phimCapNhat.ngayKhoiChieu
+            }
+
+            console.log("SSSS", state.stateFormFilm)
+            return { ...state }
+        }
+
+
+        case 'HANDLE_CHANGE_INPUT_FILM': {
+
+            // console.log("AABABABAB", action)
+            state.stateFormFilm = { ...action.newState }
+            return { ...state }
         }
 
 

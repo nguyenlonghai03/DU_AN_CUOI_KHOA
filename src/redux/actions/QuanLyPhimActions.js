@@ -241,3 +241,40 @@ export const datVeApiAction = async (thongTinVe) => {
 
     }
 }
+
+
+
+// Cập nhật phim
+export const capNhatPhimApi = (objNewPhim) => {
+    console.log("objNewPhim", objNewPhim)
+    return async dispatch => {
+        try {
+            const { data, status } = await Axios({
+                url: `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/CapNhatPhimUpload`,
+                method: 'POST',
+                data: objNewPhim,
+                headers: { 'Authorization': 'Bearer ' + localStorage.getItem(ACCESSTOKEN) }
+            })
+
+            if (status === 200) {
+                Swal.fire('Thông báo', "Cập nhật phim thành công", 'success');
+                dispatch(await layDanhSachPhimAdminApi())
+            }
+
+        } catch (err) {
+            Swal.fire('Thông báo', 'Cập nhật thất bại', 'error')
+            console.log(err)
+        }
+    }
+}
+
+
+export const suaPhim = (objNewPhim) => {
+    // console.log("OH", objNewPhim)
+    return async dispatch => {
+        await dispatch({
+            type: 'SUA_PHIM',
+            phimChinhSua: objNewPhim
+        })
+    }
+}

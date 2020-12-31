@@ -6,65 +6,67 @@ import { NavLink, Redirect, Route } from 'react-router-dom'
 import QuanLyNguoiDung from '../components/Admin/QuanLyNguoiDung';
 import { useSelector } from 'react-redux';
 import { history } from '../util/history'
+import { USER_LOGIN } from '../util/Config';
 
 export default function AdminTemplate(props) {
-
-
-
 
 
     const userLogin = useSelector(state => state.QuanLyNguoiDungReducer);
     let { Component, ...restParam } = props;
 
-
-
-
     useEffect(() => {
-        (function () {
-            const themeCookieName = 'theme'
-            const themeDark = 'dark'
-            const themeLight = 'light'
-            const barAdmin = document.querySelector('#barAdmin')
-            // const body = document.getElementsByTagName('body')[0]
+        if (localStorage.getItem("USER_LOGIN")) {
+            let maLoai = JSON.parse(localStorage.getItem('USER_LOGIN')).maLoaiNguoiDung;
+            if (maLoai === "QuanTri") {
+                (function () {
+                    const themeCookieName = 'theme'
+                    const themeDark = 'dark'
+                    const themeLight = 'light'
+                    const barAdmin = document.querySelector('#barAdmin')
+                    // const body = document.getElementsByTagName('body')[0]
 
-            const body = document.querySelector('.overlay-scrollbar');
-            // console.log("kai", kai)
-            // console.log("body", body)
-            const classBody = body.classList;
-            // console.log("classBOdy", classBody.value)
+                    const body = document.querySelector('.overlay-scrollbar');
+                    // console.log("kai", kai)
+                    // console.log("body", body)
+                    const classBody = body.classList;
+                    // console.log("classBOdy", classBody.value)
 
-            function getCookie(cname) {
-                var name = cname + "="
-                var ca = document.cookie.split(';')
-                for (var i = 0; i < ca.length; i++) {
-                    var c = ca[i];
-                    while (c.charAt(0) == ' ') {
-                        c = c.substring(1)
+                    function getCookie(cname) {
+                        var name = cname + "="
+                        var ca = document.cookie.split(';')
+                        for (var i = 0; i < ca.length; i++) {
+                            var c = ca[i];
+                            while (c.charAt(0) == ' ') {
+                                c = c.substring(1)
+                            }
+                            if (c.indexOf(name) == 0) {
+                                return c.substring(name.length, c.length)
+                            }
+                        }
+                        return ""
                     }
-                    if (c.indexOf(name) == 0) {
-                        return c.substring(name.length, c.length)
+                    loadTheme()
+                    function loadTheme() {
+                        var theme = getCookie(themeCookieName)
+                        body.classList.add(theme === "" ? themeLight : theme)
                     }
-                }
-                return ""
-            }
-            loadTheme()
-            function loadTheme() {
-                var theme = getCookie(themeCookieName)
-                body.classList.add(theme === "" ? themeLight : theme)
-            }
 
-            barAdmin.addEventListener('click', () => {
-                // body.classList == "overlay-scrollbar" ?   
-                // console.log("classBody", classBody.value)
-                if (classBody.value === "overlay-scrollbar light") {
-                    // alert('Co')
-                    body.classList.add("sidebar-expand")
-                } else {
-                    body.classList.remove("sidebar-expand")
-                }
-            })
+                    barAdmin.addEventListener('click', () => {
+                        // body.classList == "overlay-scrollbar" ?   
+                        // console.log("classBody", classBody.value)
+                        if (classBody.value === "overlay-scrollbar light") {
+                            // alert('Co')
+                            body.classList.add("sidebar-expand")
+                        } else {
+                            body.classList.remove("sidebar-expand")
+                        }
+                    })
 
-        })()
+                })()
+            } else {
+
+            }
+        }
     }, [])
 
 
@@ -74,8 +76,8 @@ export default function AdminTemplate(props) {
         // console.log("maLoai", maLoaiNguoiDung)
         if (maLoaiNguoiDung === "KhachHang") {
             alert('Bạn không phải admin');
-            history.goBack('/admin')
-            // return <Redirect to="/admin" />
+            // history.goBack('/loginlogout')
+            return <Redirect to="/loginlogout" />
         } else {
             return (
                 <>
@@ -182,7 +184,8 @@ export default function AdminTemplate(props) {
     } else {
         alert('Bạn cần đăng nhập để vào trang này!');
         // history.goBack('/admin')
-        history.goBack('/admin')
+        // history.goBack('/admin')
+        return <Redirect to="/loginlogout" />
     }
 }
 

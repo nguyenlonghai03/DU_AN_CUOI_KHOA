@@ -16,10 +16,9 @@ export default function ThemPhim() {
     const dispatch = useDispatch();
 
     const handleChange = (e) => {
-        // console.log("State", state)
-
         let target = e.target;
         if (target.name === 'hinhAnh') {
+            console.log("Eeeeee", e.target.files)
             setstate({
                 ...state,
                 hinhAnh: e.target.files[0]
@@ -30,14 +29,10 @@ export default function ThemPhim() {
                 [e.target.name]: e.target.value
             })
         }
-
-        // console.log(JSON.stringify(state))
-
     }
 
 
     const handleSubmit = (e) => {
-
         // CHUA VALIDATION
         e.preventDefault();
         var form_data = new FormData();
@@ -46,18 +41,8 @@ export default function ThemPhim() {
             form_data.append(key, state[key]);
         }
 
-        // console.log("FORM", form_data.get('tenPhim'));
         //Đối tượng bảo mật giao lưu font-end vs fe thì dùng form data cho nên k có thấy đc
         e.preventDefault();
-        // Axios({
-        //     url: 'https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/ThemPhimUploadHinh',
-        //     method: 'POST',
-        //     data: form_data
-        // }).then(res => {
-        //     console.log("RES", res)
-        // }).catch(err => {
-        //     console.log(err.response.data);
-        // })
         dispatch(ThemPhimUploadHinhApi(form_data))
     }
 
