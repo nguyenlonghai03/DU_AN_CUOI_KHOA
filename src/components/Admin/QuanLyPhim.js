@@ -45,11 +45,11 @@ export default function QuanLyPhim() {
 
                             <tr>
                                 <td>{phim.maPhim}</td>
-                                <td>{phim.tenPhim}</td>
+                                <td style={{ width: '150px' }}>{phim.tenPhim}</td>
                                 <td>
                                     <img src={phim.hinhAnh} style={{ width: '50px', height: '50px' }} />
                                 </td>
-                                <td>
+                                <td style={{ width: '300px' }}>
                                     {phim.moTa}
                                 </td>
                                 <td>{phim.maNhom}</td>

@@ -28,7 +28,7 @@ export default function Cinemas(props) {
                     maHeThongRap: heThongRap.maHeThongRap
                 })
             }} className={`nav-link ${active}`} id="v-pills-home-tab" data-toggle="pill" href={`#${heThongRap.maHeThongRap}`} role="tab" aria-controls="v-pills-home" aria-selected="true">
-                <img src={heThongRap.logo} style={{ width: "50px", height: "50px" }} />
+                <img src={heThongRap.logo} style={{ width: "50px", height: "50px", margin: '0 auto' }} />
             </a>
 
         })
@@ -79,8 +79,8 @@ export default function Cinemas(props) {
         <>
             <div style={{ fontSize: "15px", backgroundColor: 'black' }} className="cinemas container-fluid  py-5" >
                 <div className="container text-center ">
-                    <div className="row bg-light text-dark py-5">
-                        <div className="nav nav-pills flex-column col-md-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <div id="cinemas__inside" className="row bg-light text-white py-5">
+                        <div style={{ justifyContent: 'space-around' }} className="nav nav-pills col-md-12 col-md-2 row-cols-sm-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                             {renderLogo()}
                         </div>
                         <div className="tab-content col-md-4" id="v-pills-tabContent" >
