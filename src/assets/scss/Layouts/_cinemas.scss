@@ -1,3 +1,18 @@
 .cinemas {
     font-size: 15px !important;
+    // background-repeat: no-repeat;
+    // background-position: center center;
+    background-image: url('https://i.pinimg.com/originals/e3/95/76/e395761ea6c7b3b649085909b819026d.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    
+    
+}
+
+#cinemas__inside {
+    background-image: url('https://us.123rf.com/450wm/darksoul72/darksoul721811/darksoul72181100165/111612131-texture-of-the-night-sky-star-abstraction-on-a-black-background.jpg?ver=6');
+    background-attachment: fixed;
+    // background-repeat: no-repeat;
+    // background-position: center center;
+    // background-size: cover;
 }

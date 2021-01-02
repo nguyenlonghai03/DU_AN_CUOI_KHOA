@@ -140,13 +140,14 @@ h1, h2, h3, h4, h5, h6 {
     color: #6a7695;
 }
 
-
+// http://droitthemes.com/html/saasland/img/seo/footer_bg.png
 .new_footer_top .footer_bg {
     position: absolute;
     bottom: 0;
-    background: url("http://droitthemes.com/html/saasland/img/seo/footer_bg.png") no-repeat scroll center 0;
+    background: url("../img/BGFooter.jpg") no-repeat scroll center 0 ;
     width: 100%;
     height: 266px;
+    
 }
 
 .new_footer_top .footer_bg .footer_bg_one {

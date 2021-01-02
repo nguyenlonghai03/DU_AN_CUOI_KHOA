@@ -33,7 +33,7 @@ export default function ChiTietPhim(props) {
                         <div className="Center">
                             <div className="leftside">
                                 <h3>{chiTietPhim?.tenPhim}<span>Đánh giá: {chiTietPhim?.danhGia}</span></h3>
-                                <p>Mô tả: {chiTietPhim?.moTa}</p>
+                                <p style={{ textOverflow: "ellipsis" }}>Mô tả: {chiTietPhim?.moTa}</p>
                                 <p className="m-0 p-0">Ngày khởi chiếu: {moment(chiTietPhim?.ngayKhoiChieu).format('MMMM Do YYYY')}</p>
                                 <a className="my-2" href="#about">Đặt vé</a>
                             </div>

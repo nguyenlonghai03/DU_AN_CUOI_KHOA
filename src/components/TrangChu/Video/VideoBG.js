@@ -30,7 +30,7 @@ export default function VideoBG() {
                             <div className="col-12 col-sm-12 col-md-6">
                                 <div className="commingSoon__trainer">
                                     <img src="./img/slide-3-video.png" alt="Video" className="img-fluid" />
-                                    <i className="fa fa-play" data-toggle="modal" data-target="#trainer" />
+                                    {/* <i className="fa fa-play" data-toggle="modal" data-target="#trainer" /> */}
                                 </div>
                             </div>
                         </div>
