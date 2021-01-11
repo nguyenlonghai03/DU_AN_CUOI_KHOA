@@ -12,11 +12,13 @@ export default function PhongVe(props) {
 
 
     useEffect(async () => {
+        window.scrollTo(0, 0)
         //lấy tham so lich chieu tu api
         let maLichChieu = props.match.params.maLichChieu;
 
         //Gọi action kết nối api lấy dữ liệu lịch chiếu về
         dispatch(await layThongTinPhongVe(maLichChieu));
+
 
     }, []);
 

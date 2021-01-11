@@ -16,3 +16,11 @@
     // background-position: center center;
     // background-size: cover;
 }
+
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: #007bff;
+    border: 1px solid blue;
+    border-radius: 100%;
+}

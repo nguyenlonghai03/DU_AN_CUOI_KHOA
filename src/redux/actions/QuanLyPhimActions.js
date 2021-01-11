@@ -168,6 +168,27 @@ export const layTatCaApi = async () => {
 
 
 
+// =====
+// Lấy thông tin lịch chiếu
+export const layThongTinLichChieuApi = (maPhim) => {
+    console.log("MAphim", maPhim)
+    return async dispatch => {
+        try {
+            const { data, status } = Axios({
+                url: `https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`,
+                method: 'GET'
+            })
+            if (status === 200) {
+                console.log("DAAAAAA", data)
+            }
+
+        } catch (err) {
+            console.log(err.response.data)
+        }
+    }
+}
+
+
 
 
 // ============= ADMIN
@@ -346,5 +367,24 @@ export const taoLichChieuApi = (objTaoLichChieu) => {
             console.log("Tao", err.response.data)
             Swal.fire('Thông báo', 'Tạo thất bại', 'error')
         }
+    }
+}
+
+
+
+export const layNgayGioPhim = (maCumRap) => {
+    // console.log("MA", maCumRap)
+    return dispatch => {
+        console.log("MA", maCumRap)
+        try {
+            dispatch({
+                type: 'LAY_LICH_CHIEU_THEO_CUM',
+                maCumRap: maCumRap
+            })
+
+        } catch (err) {
+            console.log(err)
+        }
+
     }
 }
