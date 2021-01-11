@@ -9,6 +9,8 @@ const stateDefault = {
     chiTietPhim: {},
     layTatCa: [],
     phimTheoHeThong: [],
+    layLichChieuTheoMaCum: [],
+    maLichChieu: 0,
 
 
     danhSachNguoiDung: [],
@@ -31,6 +33,13 @@ const stateDefault = {
 
 export const QuanLyPhimReducer = (state = stateDefault, action) => {
     switch (action.type) {
+
+        case 'LAY_MA_LICH_CHIEU': {
+            state.maLichChieu = action.data
+            return { ...state }
+        }
+
+
         case 'LAY_DANH_SACH_PHIM_ACTION': {
             state.dsPhim = action.dsPhim;
             return { ...state }
@@ -171,6 +180,21 @@ export const QuanLyPhimReducer = (state = stateDefault, action) => {
 
             // console.log("AABABABAB", action)
             state.stateFormFilm = { ...action.newState }
+            return { ...state }
+        }
+        case 'LAY_LICH_CHIEU_THEO_CUM': {
+            console.log("ACtion", action);
+            console.log("state", state.chiTietPhim)
+            state.chiTietPhim.heThongRapChieu?.map((rap, index) => {
+                return rap.cumRapChieu?.map((cumRap, index) => {
+                    if (cumRap.maCumRap === action.maCumRap) {
+                        let lichChieu = cumRap.lichChieuPhim.slice(0, 7);
+                        // console.log("LICH", lichChieu)
+                        state.layLichChieuTheoMaCum = lichChieu;
+                    }
+
+                })
+            })
             return { ...state }
         }
 

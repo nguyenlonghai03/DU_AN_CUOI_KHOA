@@ -7,8 +7,10 @@ import NewTrailer from '../../components/TrangChu/NewTrailer/NewTrailer'
 import VideoBG from '../../components/TrangChu/Video/VideoBG'
 
 export default function TrangChu() {
+
     return (
         <div>
+
             <Carousel />
             {/* <NewTrailer /> */}
 

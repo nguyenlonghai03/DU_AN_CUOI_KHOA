@@ -80,7 +80,7 @@ export default function Cinemas(props) {
             <div style={{ fontSize: "15px", backgroundColor: 'black' }} className="cinemas container-fluid  py-5" >
                 <div className="container text-center ">
                     <div id="cinemas__inside" className="row bg-light text-white py-5">
-                        <div style={{ justifyContent: 'space-around' }} className="nav nav-pills col-md-12 col-md-2 row-cols-sm-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <div style={{ justifyContent: 'space-around' }} className="nav nav-pills col-md-12 row-cols-sm-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                             {renderLogo()}
                         </div>
                         <div className="tab-content col-md-4" id="v-pills-tabContent" >

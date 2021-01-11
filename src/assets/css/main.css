@@ -272,6 +272,13 @@ nav.navbar {
   background-attachment: fixed;
 }
 
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #007bff;
+  border: 1px solid blue;
+  border-radius: 100%;
+}
+
 .ghe {
   width: 35px;
   height: 35px;

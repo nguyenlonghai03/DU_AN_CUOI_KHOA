@@ -24,6 +24,7 @@
     "redux-thunk": "^2.3.0",
     "sass-loader": "^10.0.5",
     "slick-carousel": "^1.8.1",
+    "state": "^0.2.0",
     "styled-components": "^5.2.1",
     "sudoslider": "^3.5.0",
     "sweetalert2": "^10.10.1",

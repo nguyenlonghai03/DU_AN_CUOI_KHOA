@@ -93,7 +93,7 @@ export default function Footer() {
               >
                 <h3 className="f-title f_600 t_color f_size_18 text-center">Đối tác</h3>
                 <div>
-                  <img src="./img/LogoF.png" style={{ margin: "0 auto", width: '90%', height: "100%" }} />
+                  <img src="../img/LogoF.png" style={{ margin: "0 auto", width: '90%', height: "100%" }} />
                 </div>
               </div>
             </div>

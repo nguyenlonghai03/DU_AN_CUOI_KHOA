@@ -7,10 +7,12 @@ import Footer from '../components/TrangChu/Footer/Footer'
 
 // Tạo một component 2 tham số, 1 là props của route, 2 là 1 cái component, ứng dụng tạo nhiều mẫu template cho ứng dụng, thẻ Route phải khi gõ đúng đường dẫn thì hiện ra
 export const HomeTemplate = (props) => {
+    // console.log("PA", props.path)
+    console.log("SKAJDJBKJSb")
 
-
-
+    window.scrollTo(0, 0)
     useEffect(() => {
+
         // Vị trí của croll trước 
         const nav = document.querySelector('nav');
         // console.log("NAVVVVVVVVVV", nav)
@@ -29,7 +31,8 @@ export const HomeTemplate = (props) => {
         })
     }, [])
 
-    console.log(props);
+
+    // console.log(props);
     let { Component, ...restParam } = props;
     return <Route {...restParam} render={(propsRoute) => {
         return <>
