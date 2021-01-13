@@ -19,6 +19,14 @@ const stateDefault = {
             maNhom: 'GP03',
             maLoaiNguoiDung: '',
             hoTen: ''
+        },
+        errors: {
+            taiKhoan: '',
+            matKhau: '',
+            email: '',
+            soDt: '',
+            maLoaiNguoiDung: '',
+            hoTen: ''
         }
         // errors: {
 
