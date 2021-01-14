@@ -1,13 +1,52 @@
 import React, { Fragment, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import { USER_LOGIN } from '../../util/Config'
-export default function ThongTinCaNhan(props) {
+import { useDispatch, useSelector } from 'react-redux'
+import { layThongTinNguoiDungApi, layThongTinTaiKhoanApi } from '../../redux/actions/QuanLyNguoiDungActions'
+import moment from 'moment'
 
+export default function ThongTinCaNhan(props) {
+    const { thongTinTaiKhoan } = useSelector(state => state.QuanLyNguoiDungReducer)
+    const dispatch = useDispatch();
+    const taiKhoan = JSON.parse(localStorage.getItem(USER_LOGIN));
+
+    useEffect(async () => {
+        dispatch(await layThongTinTaiKhoanApi(taiKhoan))
+    }, [])
 
     if (localStorage.getItem(USER_LOGIN)) {
+
+
+
+        const renderThongTinTaiKhoan = () => {
+            return <div className="p-4" style={{ backgroundColor: 'black', borderRadius: '20px' }}>
+                <p>Họ tên: {thongTinTaiKhoan.hoTen} </p>
+                <p>Email: {thongTinTaiKhoan.email}</p>
+                <p>Số điện thoại: {thongTinTaiKhoan.soDT}</p>
+                <p>Tài khoản: {thongTinTaiKhoan.taiKhoan}</p>
+                <p>Mật khẩu: {thongTinTaiKhoan.matKhau}</p>
+            </div>
+        }
+
+        console.log("TT", thongTinTaiKhoan.thongTinDatVe)
+
+        const renderPhimDaDat = () => {
+            return thongTinTaiKhoan.thongTinDatVe?.map((thongTin, index) => {
+                return <div className="col-12 m-3 text-white"  >
+                    <div className="row" style={{ backgroundColor: 'black', borderRadius: '20px' }}>
+                        <div className="col-8 pl-5" >
+                            <p >Tên phim: {thongTin.tenPhim}</p>
+                            <p >Thời lượng: {thongTin.thoiLuongPhim} phút</p>
+                            <p>Ngày đặt: {moment(thongTin.ngayDat).format('MMMM Do YYYY, h:mm:ss a')}</p>
+                            <p>Giá vé: {thongTin.giaVe} VND</p>
+                        </div>
+                    </div>
+                </div>
+            })
+        }
         return (
             <Fragment>
-                <div className="container" data-spy="scroll" >
+                <div style={{ marginTop: '100px' }} className="container" data-spy="scroll" >
                     <main >
                         {/* <h1>CSS Tabs Revisited</h1> */}
                         <input id="radio1" type="radio" name="css-tabs" defaultChecked />
@@ -18,56 +57,14 @@ export default function ThongTinCaNhan(props) {
                         </div>
                         <div id="content" >
                             <section id="content1" className="mt-2">
-                                <div className="row" style={{ position: 'relative', height: '400px', overflowX: 'hidden' }}>
-                                    <div className="col-md-12 d-flex m-3" >
-                                        <div className="row">
-                                            <div className="col-md-6">
-                                                <img src="https://picsum.photos/200/200" style={{ width: "150px", height: "150px" }} />
-                                            </div>
-                                            <div className="col-md-6" >
-                                                <span>Tên phim</span>
-                                                <span>Thời lượng</span>
-                                                <button className="btn btn-danger" style={{ cursor: "pointer" }}>Hủy</button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="col-md-12 d-flex m-3" >
-                                        <div className="row">
-                                            <div className="col-md-6">
-                                                <img src="https://picsum.photos/200/200" style={{ width: "150px", height: "150px" }} />
-                                            </div>
-                                            <div className="col-md-6" >
-                                                <span>Tên phim</span>
-                                                <span>Thời lượng</span>
-                                                <button className="btn btn-danger" style={{ cursor: "pointer" }}>Hủy</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-12 d-flex m-3" >
-                                        <div className="row">
-                                            <div className="col-md-6">
-                                                <img src="https://picsum.photos/200/200" style={{ width: "150px", height: "150px" }} />
-                                            </div>
-                                            <div className="col-md-6" >
-                                                <span>Tên phim</span>
-                                                <span>Thời lượng</span>
-                                                <button className="btn btn-danger" style={{ cursor: "pointer" }}>Hủy</button>
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                <h1 style={{ color: "green" }}>Thông tin phim đã đặt</h1>
+                                <div className="row" style={{ position: 'relative', maxWidth: '800px', height: '400px', overflowX: 'hidden' }}>
+                                    {renderPhimDaDat()}
                                 </div>
                             </section>
                             <section id="content2" className="text-white">
-                                <div>
-                                    <p>Họ tên: </p>
-                                    <p>Email: </p>
-                                    <p>Số điện thoại: </p>
-                                    <p>Tài khoản: </p>
-                                    <p>Mật khẩu: </p>
-                                    <button className="btn btn-success">Chỉnh sửa</button>
-                                </div>
+                                <h1 style={{ color: "green" }}>Thông tin cá nhân</h1>
+                                {renderThongTinTaiKhoan()}
                             </section>
                         </div>
 

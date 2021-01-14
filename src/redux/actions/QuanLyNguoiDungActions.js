@@ -189,3 +189,27 @@ export const suaNguoiDung = (nguoiDung) => {
     })
   }
 }
+
+
+export const layThongTinTaiKhoanApi = (taiKhoan) => {
+  console.log("TAI khoan", taiKhoan)
+  return async (dispatch) => {
+    try {
+      const { data, status } = await Axios({
+        url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThongTinTaiKhoan`,
+        method: 'POST',
+        data: taiKhoan
+      })
+
+      if (status === 200) {
+        dispatch({
+          type: 'LAY_THONG_TIN_TAI_KHOAN',
+          data: data
+        })
+      }
+
+    } catch (err) {
+      console.log("errr", err.response.data)
+    }
+  }
+}
