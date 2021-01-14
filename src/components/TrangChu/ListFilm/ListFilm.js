@@ -62,6 +62,8 @@ export default function ListFilm() {
 
                 </div>
             </div>
+
+
         });
     }
 
@@ -114,26 +116,23 @@ export default function ListFilm() {
     return (
         <div>
 
-            <section className="movieList py-5">
-                <div className="container">
-                    <div className="row form-control py-3 mb-5" style={{ height: 'auto' }}>
+            <section className="movieList py-5 mx-auto">
+                <div className="container ">
+                    <div className="row form-control p-3" style={{ height: 'auto', margin: '0px' }}>
                         <div className="col-md-4 col-sm-12  ">
-                            <select onChange={handleChangeSelect} className="form-control col mx-3">
+                            <select onChange={handleChangeSelect} className="form-control col px-3">
                                 <option>Phim</option>
                                 {renderTenPhimTimKiem()}
                             </select>
                         </div>
                         <div className="col-md-4 col-sm-12  ">
-
-
-                            <select onChange={handleChangeRap} className="form-control col mx-3">
+                            <select onChange={handleChangeRap} className="form-control col px-3">
                                 <option>Rạp</option>
                                 {renderRapTheoTenPhim()}
                             </select>
                         </div>
                         <div className="col-md-4 col-sm-12  ">
-
-                            <select onChange={handleChangeNgayChieu} className="form-control col mx-3">
+                            <select onChange={handleChangeNgayChieu} className="form-control col px-3">
                                 <option>Ngày xem/ Giờ xem</option>
                                 {renderNgayGioChieu()}
                             </select>
@@ -145,6 +144,7 @@ export default function ListFilm() {
                         <NavLink to={'/phongve/' + maLichChieu} className="btn btn-success col mx-3">Mua vé</NavLink>
 
                     </div>
+                    <h1 className="text-center my-4">Danh sách phim</h1>
                     <Slider {...settingSlick}>
                         {renderDSPhim()}
                     </Slider>

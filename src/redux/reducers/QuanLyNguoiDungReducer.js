@@ -31,7 +31,8 @@ const stateDefault = {
         // errors: {
 
         // }
-    }
+    },
+    thongTinTaiKhoan: {}
 }
 
 export const QuanLyNguoiDungReducer = (state = stateDefault, action) => {
@@ -58,6 +59,11 @@ export const QuanLyNguoiDungReducer = (state = stateDefault, action) => {
         case 'HANDLE_CHANGE_INPUT': {
             state.stateForm = { ...action.newState }
             // console.log("state", state.stateForm)
+            return { ...state }
+        }
+
+        case 'LAY_THONG_TIN_TAI_KHOAN': {
+            state.thongTinTaiKhoan = action.data
             return { ...state }
         }
 

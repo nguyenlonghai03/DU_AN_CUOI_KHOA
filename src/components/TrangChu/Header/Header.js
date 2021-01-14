@@ -54,16 +54,7 @@ export default function Header() {
 									Trang Chủ
 								</NavLink>
 							</li>
-							<li className="nav-item">
-								<NavLink className="nav-link" to="/cumrap">
-									Cụm rạp
-							</NavLink>
-							</li>
-							<li className="nav-item">
-								<NavLink className="nav-link" to="/sukien">
-									Sự kiện
-							</NavLink>
-							</li>
+
 							<li className="nav-item">
 								<NavLink className="nav-link" to="/thongtincanhan">
 									Thông tin cá nhân
