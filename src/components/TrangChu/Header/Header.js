@@ -61,13 +61,16 @@ export default function Header() {
 				{/* <button style={{ backgroundColor: "blue" }} className="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation" /> */}
 				<div className="collapse navbar-collapse container" id="collapsibleNavId">
 					<ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+						<li className="nav-item mr-5" >
+							<img src="../img/images.png" style={{ width: "50px", height: '50px', borderRadius: '50px' }} />
+						</li>
 						<li className="nav-item active">
-							<NavLink style={{ color: 'blue', padding: '0px' }} className="nav-link" to="/">
+							<NavLink style={{ color: 'white', padding: '0px' }} className="nav-link" to="/">
 								Trang Chủ
 								</NavLink>
 						</li>
 						<li className="nav-item">
-							<NavLink className="nav-link" style={{ color: 'blue', padding: "0px" }} to="/thongtincanhan">
+							<NavLink className="nav-link" style={{ color: 'white', padding: "0px" }} to="/thongtincanhan">
 								Thông tin cá nhân
 							</NavLink>
 						</li>

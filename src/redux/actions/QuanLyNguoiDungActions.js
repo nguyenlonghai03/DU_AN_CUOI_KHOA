@@ -194,6 +194,9 @@ export const suaNguoiDung = (nguoiDung) => {
 export const layThongTinTaiKhoanApi = (taiKhoan) => {
   console.log("TAI khoan", taiKhoan)
   return async (dispatch) => {
+    dispatch({
+      type: 'DISPLAY_LOADING'
+    })
     try {
       const { data, status } = await Axios({
         url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThongTinTaiKhoan`,
@@ -211,5 +214,9 @@ export const layThongTinTaiKhoanApi = (taiKhoan) => {
     } catch (err) {
       console.log("errr", err.response.data)
     }
+    dispatch({
+      type: 'HIDE_LOADING'
+    })
   }
+
 }

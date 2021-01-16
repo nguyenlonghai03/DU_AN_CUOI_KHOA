@@ -190,7 +190,7 @@ nav a.logo {
 }
 
 nav a.logo:hover {
-  color: #ff0;
+  color: #333;
 }
 
 nav ul {
@@ -217,7 +217,7 @@ nav ul li a {
 
 nav ul li a.active,
 nav ul li a:hover {
-  background: #ff0;
+  background: #333;
   color: #000;
 }
 

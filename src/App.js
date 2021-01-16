@@ -19,11 +19,13 @@ import ThemMoiNguoiDung from "./components/Admin/ThemMoiNguoiDung";
 import ThemPhim from "./components/Admin/ThemPhim";
 import QuanLyPhim from "./components/Admin/QuanLyPhim";
 import LoginLogout from "./components/Admin/LoginLogout";
+import LoadingComponent from "./components/GlobalSetting/LoadingComponent/LoadingComponent";
 
 
 function App() {
   return (
     <BrowserRouter>
+      <LoadingComponent />
       <Switch>
         <HomeTemplate exact path="/home" Component={TrangChu} />
         <HomeTemplate
