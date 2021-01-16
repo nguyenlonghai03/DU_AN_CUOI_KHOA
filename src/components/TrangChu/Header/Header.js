@@ -6,6 +6,8 @@ import { NavLink } from "react-router-dom";
 import Modal2 from './Modal2';
 import DangKy from '../../../pages/TrangChu/DangKy'
 import DangNhap from '../../../pages/TrangChu/DangNhap'
+import { ACCESSTOKEN, USER_LOGIN } from "../../../util/Config";
+import Swal from "sweetalert2";
 
 
 const DangKyWithModal = new Modal2('Đăng ký', DangKy)
@@ -23,6 +25,11 @@ export default function Header() {
 		}
 	}
 
+	const dangXuatNe = () => {
+
+		localStorage.removeItem(USER_LOGIN);
+		localStorage.removeItem(ACCESSTOKEN);
+	}
 	return (
 		<>
 			{/* <nav className="sth navbar navbar-expand-sm text-light">
@@ -77,9 +84,11 @@ export default function Header() {
 
 					</ul>
 					<div class="btn__group">
-						{userLogin.taiKhoan ? <button className="btn btn-primary m-2 btn__login"><i class="fa fa-user-circle" aria-hidden="true"></i> Hello {userLogin.taiKhoan}!</button> :
+						{userLogin.taiKhoan ?
+							<button className="btn btn-primary m-2 btn__login"><i class="fa fa-user-circle" aria-hidden="true"></i> Hello {userLogin.taiKhoan}!</button> :
 							<NavLink className="btn btn-primary m-2 btn__login" to="/loginlogout">Đăng nhập</NavLink>
 						}
+						{userLogin.taiKhoan ? <a className="btn btn-success" onClick={() => { dangXuatNe() }} href="/loginlogout">Đăng xuất</a> : ''}
 
 					</div>
 
