@@ -39,6 +39,9 @@ export default function ThongTinCaNhan(props) {
                             <p >Thời lượng: {thongTin.thoiLuongPhim} phút</p>
                             <p>Ngày đặt: {moment(thongTin.ngayDat).format('MMMM Do YYYY, h:mm:ss a')}</p>
                             <p>Giá vé: {thongTin.giaVe} VND</p>
+                            <p>Ghế đã đặt: {thongTin.danhSachGhe.map((item, index) => {
+                                return <span>Ghế {item.tenGhe}.    </span>
+                            })}</p>
                         </div>
                     </div>
                 </div>
