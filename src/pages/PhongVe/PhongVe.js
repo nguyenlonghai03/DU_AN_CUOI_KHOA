@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { datVeApiAction, layThongTinPhongVe } from '../../redux/actions/QuanLyPhimActions';
 import { USER_LOGIN } from '../../util/Config';
+import * as ReactBootStrap from 'react-bootstrap'
 
 
 export default function PhongVe(props) {

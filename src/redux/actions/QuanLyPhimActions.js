@@ -103,6 +103,9 @@ export const layThongTinPhongVe = async (maLichChieu) => {
 
     return async (dispatch) => {
         try {
+            dispatch({
+                type: 'DISPLAY_LOADING'
+            })
 
             const { data, status } = await Axios({
                 url: `https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`,
@@ -120,12 +123,18 @@ export const layThongTinPhongVe = async (maLichChieu) => {
             console.log(err);
 
         }
+        dispatch({
+            type: 'HIDE_LOADING'
+        })
     }
 }
 
 
 export const layChiTietPhimApi = async (maPhim) => {
     return async (dispatch) => {
+        dispatch({
+            type: 'DISPLAY_LOADING'
+        })
         try {
             const { data, status } = await Axios({
                 url: `https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`,
@@ -140,6 +149,9 @@ export const layChiTietPhimApi = async (maPhim) => {
         } catch (err) {
             console.log(err)
         }
+        dispatch({
+            type: 'HIDE_LOADING'
+        })
     }
 }
 
@@ -148,6 +160,9 @@ export const layChiTietPhimApi = async (maPhim) => {
 
 export const layTatCaApi = async () => {
     return async (dispatch) => {
+        dispatch({
+            type: 'DISPLAY_LOADING'
+        })
         try {
             const { data, status } = await Axios({
                 url: 'https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP03',
@@ -163,6 +178,9 @@ export const layTatCaApi = async () => {
         } catch (err) {
             console.log(err)
         }
+        dispatch({
+            type: 'HIDE_LOADING'
+        })
     }
 }
 
