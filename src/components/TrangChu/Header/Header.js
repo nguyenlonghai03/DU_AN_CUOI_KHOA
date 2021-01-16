@@ -64,7 +64,7 @@ export default function Header() {
 						<li className="nav-item mr-5" >
 							<img src="../img/images.png" style={{ width: "50px", height: '50px', borderRadius: '50px' }} />
 						</li>
-						<li className="nav-item active">
+						<li className="nav-item active ml-2 mr-3">
 							<NavLink style={{ color: 'white', padding: '0px' }} className="nav-link" to="/">
 								Trang Chủ
 								</NavLink>

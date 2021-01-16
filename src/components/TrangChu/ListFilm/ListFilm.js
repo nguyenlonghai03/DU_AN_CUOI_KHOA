@@ -11,8 +11,9 @@ import { NavLink } from 'react-router-dom'
 
 
 export default function ListFilm() {
-
-
+    // const [state, setstate] = useState(initialState)
+    let [valid, setValid] = useState(false)
+    // let valid = false;
     const { dsPhim, layTatCa, chiTietPhim, layLichChieuTheoMaCum, maLichChieu } = useSelector(state => state.QuanLyPhimReducer);
     console.log("XXx", chiTietPhim)
 
@@ -86,7 +87,9 @@ export default function ListFilm() {
         })
     }
     const renderNgayGioChieu = () => {
+
         return layLichChieuTheoMaCum.map((lich, index) => {
+
             return <option value={lich.maLichChieu} key={index}>{moment(lich.ngayChieuGioChieu).format('MMMM Do YYYY // hh:mm a')}</option>
         })
     }
@@ -101,7 +104,7 @@ export default function ListFilm() {
 
     }
     const handleChangeRap = (e) => {
-        console.log("EEE", e.target.value)
+        // console.log("EEE", e.target.value)
         dispatch(layNgayGioPhim(e.target.value))
     }
     const handleChangeNgayChieu = (e) => {
@@ -110,6 +113,9 @@ export default function ListFilm() {
             type: 'LAY_MA_LICH_CHIEU',
             data: e.target.value
         })
+        // console.log("VLLLL", valid)
+
+        setValid(true);
     }
 
 
@@ -141,7 +147,8 @@ export default function ListFilm() {
                                 <option>Xuất chiếu</option>
                                 {renderSuatChieu()}
                             </select> */}
-                        <NavLink to={'/phongve/' + maLichChieu} className="btn btn-success col mx-3">Mua vé</NavLink>
+
+                        {valid === true ? <NavLink to={'/phongve/' + maLichChieu} className="btn btn-success col mx-3">Mua vé</NavLink> : <NavLink to={'/phongve/' + maLichChieu} className="btn btn-success col mx-3 disabled">Mua vé</NavLink>}
 
                     </div>
                     <h1 className="text-center my-4">Danh sách phim</h1>
