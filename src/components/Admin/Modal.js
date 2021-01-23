@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { taoLichChieuApi } from '../../redux/actions/QuanLyPhimActions';
 
 export default function Modal() {
-
+    const { phimLichChieu } = useSelector(state => state.QuanLyPhimReducer)
     const dispatch = useDispatch();
+    // let maPhimNe = phimLichChieu.maPhim
+
 
 
     const [state, setState] = useState({
@@ -31,6 +33,9 @@ export default function Modal() {
         }
 
 
+        // console.log("stataaaaa", state)
+
+
     }
 
 
@@ -42,6 +47,7 @@ export default function Modal() {
 
     }
 
+    console.log("PHIMASKDAS", phimLichChieu)
 
     return (
         //         <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId">
@@ -68,14 +74,24 @@ export default function Modal() {
                             </div>
                             <div className="row">
                                 <div className="col">
-                                    <label>Ngày chiếu giờ chiếu (dd/mm/yyyy hh/mm/ss)</label>
+                                    <label>Ngày chiếu giờ chiếu (dd/mm/yyyy hh:mm:ss)</label>
                                     <input name="ngayChieuGioChieu" className="form-control" onChange={handleChange} />
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col">
                                     <label>Mã rạp</label>
-                                    <input name="maRap" className="form-control" onChange={handleChange} />
+
+
+                                    <select name="maRap" className="form-control" onChange={handleChange}>
+                                        <option>
+                                            Mã rạp
+                                        </option>
+
+                                        <option value={699}>
+                                            CGV-vincom-Lanmark81 (699)
+                                        </option>
+                                    </select>
                                 </div>
                             </div>
                             <div className="row">

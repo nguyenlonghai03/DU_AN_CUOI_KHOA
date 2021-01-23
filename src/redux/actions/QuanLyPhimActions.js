@@ -382,8 +382,8 @@ export const taoLichChieuApi = (objTaoLichChieu) => {
 
         } catch (err) {
 
-            console.log("Tao", err.response.data)
-            Swal.fire('Thông báo', 'Tạo thất bại', 'error')
+            // console.log("Tao", err.response.data)
+            Swal.fire('Thông báo', err.response.data, 'error')
         }
     }
 }
@@ -404,5 +404,15 @@ export const layNgayGioPhim = (maCumRap) => {
             console.log(err)
         }
 
+    }
+}
+
+export const taoLichChieuAdmin = (phim) => {
+    console.log("PHIM", phim)
+    return async dispatch => {
+        await dispatch({
+            type: 'TAO_LICH_CHIEU_ADMIN',
+            data: phim
+        })
     }
 }
