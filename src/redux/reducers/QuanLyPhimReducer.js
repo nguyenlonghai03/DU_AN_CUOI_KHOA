@@ -26,6 +26,10 @@ const stateDefault = {
             maNhom: 'GP03',
             ngayKhoiChieu: ''
         }
+    },
+
+    phimLichChieu: {
+
     }
 
 
@@ -195,6 +199,12 @@ export const QuanLyPhimReducer = (state = stateDefault, action) => {
 
                 })
             })
+            return { ...state }
+        }
+
+        case 'TAO_LICH_CHIEU_ADMIN': {
+            state.phimLichChieu = action.data;
+            // console.log("state", state.phimLichChieu)
             return { ...state }
         }
 
