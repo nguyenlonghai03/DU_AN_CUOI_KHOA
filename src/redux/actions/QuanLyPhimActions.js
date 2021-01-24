@@ -132,9 +132,9 @@ export const layThongTinPhongVe = async (maLichChieu) => {
 
 export const layChiTietPhimApi = async (maPhim) => {
     return async (dispatch) => {
-        dispatch({
-            type: 'DISPLAY_LOADING'
-        })
+        // dispatch({
+        //     type: 'DISPLAY_LOADING'
+        // })
         try {
             const { data, status } = await Axios({
                 url: `https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`,
@@ -149,9 +149,9 @@ export const layChiTietPhimApi = async (maPhim) => {
         } catch (err) {
             console.log(err)
         }
-        dispatch({
-            type: 'HIDE_LOADING'
-        })
+        // dispatch({
+        //     type: 'HIDE_LOADING'
+        // })
     }
 }
 
