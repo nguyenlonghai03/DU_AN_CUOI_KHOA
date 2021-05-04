@@ -3,6 +3,12 @@
     background: #101010;
 }
 
+.slick-arrow {
+
+}
+.slick-prev {
+    z-index: 1000;
+}
 .movieList__item img {
     border-radius: 10px;
     width: 100%;
@@ -13,6 +19,29 @@
 .movieList__info {
     color: #fff;
     text-align: center;
+    button {
+        @include repond-to("small") {
+                    font-size: 12px;
+        }
+        @include repond-to("medium") {
+            font-size: 13px;
+        }
+    }
+    .linkN {
+        @include repond-to("medium") {
+            font-size: 13px;
+        }
+    }
+}
+.anhCr {
+    @include repond-to("small") {
+        width: 100%;
+        height: 360px;
+    }
+    @include repond-to("medium") {
+        width: 100%;
+        height: 130px;
+    }
 }
 
 .movieList__info h4 {
