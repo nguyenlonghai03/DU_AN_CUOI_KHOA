@@ -11,22 +11,10 @@ import { NavLink } from 'react-router-dom'
 
 
 export default function ListFilm() {
-    // const [state, setstate] = useState(initialState)
     let [valid, setValid] = useState(false)
-    // let valid = false;
     const { dsPhim, layTatCa, chiTietPhim, layLichChieuTheoMaCum, maLichChieu } = useSelector(state => state.QuanLyPhimReducer);
-    console.log("XXx", chiTietPhim)
-
-    // console.log("Taatsca", layTatCa)z
-    console.log("LAYAA", maLichChieu)
-
-
     const dispatch = useDispatch();
-    let settingSlick = {
-        slidesToShow: 4,
-        autoplay: false,
-        rows: 2,
-    }
+
 
     const [isOpen, setOpen] = useState(false)
     const [urlVideo, seturlVideo] = useState('')
@@ -35,7 +23,6 @@ export default function ListFilm() {
 
     useEffect(() => {
         dispatch(layDanhSachPhimApiAction());
-
     }, [])
 
     const getIdVideo = (url) => {
@@ -46,22 +33,24 @@ export default function ListFilm() {
 
     const renderDSPhim = () => {
         return dsPhim.map((phim, index) => {
-            return <div className="movieList__item p-3" key={index}>
-                <img src={phim.hinhAnh} alt="Image" className="img-fluid" />
-                <div className="movieList__info">
-                    <h4>{phim.tenPhim}</h4>
+            return <div className="col-md-4 col-sm-12">
+                <img src={phim.hinhAnh} className="anhCr" alt="Image" style={{ position: 'relative' }} />
+                <div className="movieList__info" style={{ position: 'relative' }}>
+                    {/* <h4>{phim.tenPhim}</h4> */}
                     <p>{moment(phim.ngayKhoiChieu).format('hh:mm A')}</p>
-                    <div>
-                        <button type="button" className="btn btn-primary" onClick={() => {
+                    <div className="d-flex" style={{ padding: 0, textAlign: 'center', alignItems: 'center', justifyContent: 'center' }}>
+                        <button className="btn btn-primary m-1" onClick={() => {
                             setOpen(true);
                             seturlVideo(getIdVideo(phim.trailer));
                         }}>
                             Video
                         </button>
-                        <NavLink className="btn btn-success" to={`/chitietphim/:${phim.maPhim}`}>Chi tiết</NavLink>
+                        <NavLink type="button" className="btn btn-success m-1 linkN" to={`/chitietphim/:${phim.maPhim}`}>Detail</NavLink>
+
                     </div>
 
                 </div>
+
             </div>
 
 
@@ -96,6 +85,45 @@ export default function ListFilm() {
 
 
 
+    const renderSlick = () => {
+        var settings = {
+            centerMode: true,
+            centerPadding: '60px',
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            arrows: true,
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        arrows: false,
+                        centerMode: true,
+                        centerPadding: '40px',
+                        slidesToShow: 3
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        arrows: false,
+                        centerMode: true,
+                        centerPadding: '40px',
+                        slidesToShow: 1
+                    }
+                }
+            ]
+        };
+        return (
+            <div className="col" style={{ padding: 0, textAlign: "center" }}>
+                <Slider {...settings}>
+                    {renderDSPhim()}
+                </Slider>
+            </div>
+        );
+    }
+
+
+
 
 
     const handleChangeSelect = async (e) => {
@@ -121,11 +149,10 @@ export default function ListFilm() {
 
     return (
         <div>
-
             <section className="movieList py-5 mx-auto">
                 <div className="container ">
                     <div className="row form-control p-3" style={{ height: 'auto', margin: '0px' }}>
-                        <div className="col-md-4 col-sm-12  ">
+                        <div className="col-md-4 col-sm-12">
                             <select onChange={handleChangeSelect} className="form-control col px-3">
                                 <option>Phim</option>
                                 {renderTenPhimTimKiem()}
@@ -151,13 +178,18 @@ export default function ListFilm() {
                         {valid === true ? <NavLink to={'/phongve/' + maLichChieu} className="btn btn-success col mx-3">Mua vé</NavLink> : <NavLink to={'/phongve/' + maLichChieu} className="btn btn-success col mx-3 disabled">Mua vé</NavLink>}
 
                     </div>
-                    <h1 className="text-center my-4">Danh sách phim</h1>
-                    <Slider {...settingSlick}>
-                        {renderDSPhim()}
-                    </Slider>
+                    <div className="row">
+                        <div className="col">
+                            <h1 className="text-center my-4">Danh sách phim</h1>
+                        </div>
+                        {renderSlick()}
+
+                    </div>
                     <PopupVideo isOpen={isOpen} onClose={() => setOpen(false)} videoId={urlVideo} />
                 </div>
+
             </section>
+
         </div>
 
     )

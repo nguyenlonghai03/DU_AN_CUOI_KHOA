@@ -217,8 +217,7 @@ nav ul li a {
 
 nav ul li a.active,
 nav ul li a:hover {
-  background: #333;
-  color: #000;
+  color: #8585e4 !important;
 }
 
 nav.navbar {
@@ -654,6 +653,10 @@ html, body {
   background: #101010;
 }
 
+.slick-prev {
+  z-index: 1000;
+}
+
 .movieList__item img {
   border-radius: 10px;
   width: 100%;
@@ -664,6 +667,38 @@ html, body {
 .movieList__info {
   color: #fff;
   text-align: center;
+}
+
+@media screen and (max-width: 576px) {
+  .movieList__info button {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .movieList__info button {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .movieList__info .linkN {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .anhCr {
+    width: 100%;
+    height: 360px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .anhCr {
+    width: 100%;
+    height: 130px;
+  }
 }
 
 .movieList__info h4 {
